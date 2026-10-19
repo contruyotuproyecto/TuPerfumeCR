@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  const CART_KEY = 'tuperfumecr_cart_v1';
   const FAVORITES_KEY = 'tuperfumecr_favorites_v1';
   const state = {
     products: [],
@@ -8,8 +9,11 @@
     query: '',
     sort: 'featured',
     favoritesOnly: false,
+    cart: readStorage(CART_KEY, []),
     favorites: new Set(readStorage(FAVORITES_KEY, [])),
     lastDialogFocus: null,
+    lastCartFocus: null,
+    checkoutTrigger: null,
     toastTimer: 0
   };
 
@@ -21,14 +25,28 @@
     filters: document.getElementById('categoryFilters'),
     controls: document.getElementById('catalogControls'),
     favoritesToggle: document.getElementById('favoritesToggle'),
+    cartToggle: document.getElementById('cartToggle'),
+    cartCount: document.getElementById('cartCount'),
+    cartDrawer: document.getElementById('cartDrawer'),
+    cartBackdrop: document.getElementById('drawerBackdrop'),
+    cartClose: document.getElementById('cartClose'),
+    cartBody: document.getElementById('cartBody'),
+    cartTotal: document.getElementById('cartTotal'),
+    checkoutButton: document.getElementById('checkoutButton'),
+    checkoutDialog: document.getElementById('checkoutDialog'),
+    checkoutClose: document.getElementById('checkoutClose'),
+    checkoutReturn: document.getElementById('checkoutReturn'),
+    checkoutSummary: document.getElementById('checkoutSummary'),
+    checkoutTotal: document.getElementById('checkoutTotal'),
     productDialog: document.getElementById('productDialog'),
     dialogClose: document.getElementById('dialogClose'),
-    dialogCloseAction: document.getElementById('dialogCloseAction'),
     dialogImage: document.getElementById('dialogImage'),
     dialogBrand: document.getElementById('dialogBrand'),
     dialogName: document.getElementById('dialogName'),
     dialogSpecs: document.getElementById('dialogSpecs'),
     dialogDescription: document.getElementById('dialogDescription'),
+    dialogPrice: document.getElementById('dialogPrice'),
+    dialogAdd: document.getElementById('dialogAdd'),
     toast: document.getElementById('toast')
   };
 
@@ -51,6 +69,14 @@
 
   function cleanText(value) {
     return String(value || '').toLocaleLowerCase('es-CR').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function money(value) {
+    return new Intl.NumberFormat('es-CR', {
+      style: 'currency',
+      currency: 'CRC',
+      maximumFractionDigits: 0
+    }).format(Number(value) || 0);
   }
 
   function makeElement(tag, className, text) {
@@ -98,13 +124,17 @@
     heading.append(nameButton);
 
     const description = makeElement('p', 'product-description', product.descripcion);
+    const price = makeElement('p', 'product-price');
+    price.append(makeElement('span', '', 'Precio'));
+    price.append(makeElement('strong', '', money(product.precio)));
+    const specs = makeElement('p', 'product-spec', product.tamano + ' · ' + product.concentracion);
     const actions = makeElement('div', 'card-actions');
-    const detailsAction = makeElement('button', 'add-button', 'Ver fragancia');
-    detailsAction.type = 'button';
-    detailsAction.setAttribute('aria-label', 'Ver detalles de ' + product.nombre);
-    detailsAction.addEventListener('click', function () { openDetails(product, detailsAction); });
-    actions.append(detailsAction);
-    body.append(meta, heading, description, actions);
+    const add = makeElement('button', 'add-button', 'Agregar al carrito');
+    add.type = 'button';
+    add.setAttribute('aria-label', 'Agregar ' + product.nombre + ' al carrito');
+    add.addEventListener('click', function () { addToCart(product.id); });
+    actions.append(add);
+    body.append(meta, heading, description, price, specs, actions);
     card.append(visual, body);
     return card;
   }
@@ -171,6 +201,154 @@
     elements.favoritesToggle.title = label;
   }
 
+  function addToCart(id) {
+    const product = state.products.find(function (item) { return item.id === id; });
+    if (!product) return;
+    const line = state.cart.find(function (item) { return item.id === id; });
+    if (line) line.qty = Math.min(99, line.qty + 1);
+    else state.cart.push({ id: id, qty: 1 });
+    saveCart();
+    updateCartCount();
+    renderCart();
+    showToast(product.nombre + ' se añadió al carrito.');
+  }
+
+  function saveCart() {
+    writeStorage(CART_KEY, state.cart);
+  }
+
+  function updateCartCount() {
+    const count = state.cart.reduce(function (sum, item) { return sum + (Number(item && item.qty) || 0); }, 0);
+    elements.cartCount.textContent = String(count);
+    elements.cartToggle.setAttribute('aria-label', 'Abrir carrito; ' + count + (count === 1 ? ' producto' : ' productos'));
+  }
+
+  function renderCart() {
+    state.cart = state.cart.filter(function (line) {
+      return line && state.products.some(function (product) { return product.id === line.id; }) && Number(line.qty) > 0;
+    }).map(function (line) {
+      return { id: line.id, qty: Math.min(99, Math.floor(Number(line.qty))) };
+    });
+    saveCart();
+    updateCartCount();
+    elements.cartBody.replaceChildren();
+    elements.checkoutButton.disabled = state.cart.length === 0;
+
+    if (!state.cart.length) {
+      const empty = makeElement('div', 'drawer-empty');
+      empty.append(makeElement('strong', '', 'Tu carrito está vacío'));
+      empty.append(makeElement('span', '', 'Agregá las fragancias que querés llevar.'));
+      elements.cartBody.append(empty);
+      elements.cartTotal.textContent = money(0);
+      return;
+    }
+
+    let total = 0;
+    state.cart.forEach(function (line) {
+      const product = state.products.find(function (item) { return item.id === line.id; });
+      if (!product) return;
+      total += product.precio * line.qty;
+      const row = makeElement('article', 'cart-line');
+      const image = document.createElement('img');
+      image.src = product.foto;
+      image.alt = '';
+      image.width = 72;
+      image.height = 84;
+      image.loading = 'lazy';
+      const copy = makeElement('div');
+      copy.append(makeElement('strong', 'cart-line-name', product.nombre));
+      copy.append(makeElement('span', 'cart-line-meta', product.marca + ' · ' + product.tamano));
+      copy.append(makeElement('span', 'cart-line-price', money(product.precio) + ' c/u'));
+      const quantity = makeElement('div', 'qty-controls');
+      const decrease = makeElement('button', '', '−');
+      decrease.type = 'button';
+      decrease.setAttribute('aria-label', 'Quitar una unidad de ' + product.nombre);
+      decrease.addEventListener('click', function () { changeQuantity(product.id, -1); });
+      const value = makeElement('span', 'qty-value', String(line.qty));
+      value.setAttribute('aria-label', 'Cantidad');
+      const increase = makeElement('button', '', '+');
+      increase.type = 'button';
+      increase.setAttribute('aria-label', 'Añadir una unidad de ' + product.nombre);
+      increase.disabled = line.qty >= 99;
+      increase.addEventListener('click', function () { changeQuantity(product.id, 1); });
+      quantity.append(decrease, value, increase);
+      copy.append(quantity);
+      const remove = makeElement('button', 'remove-line', '×');
+      remove.type = 'button';
+      remove.setAttribute('aria-label', 'Quitar ' + product.nombre + ' del carrito');
+      remove.addEventListener('click', function () { removeFromCart(product.id); });
+      row.append(image, copy, remove);
+      elements.cartBody.append(row);
+    });
+    elements.cartTotal.textContent = money(total);
+  }
+
+  function changeQuantity(id, difference) {
+    const line = state.cart.find(function (item) { return item.id === id; });
+    if (!line) return;
+    line.qty += difference;
+    if (line.qty <= 0) state.cart = state.cart.filter(function (item) { return item.id !== id; });
+    else line.qty = Math.min(99, line.qty);
+    saveCart();
+    renderCart();
+  }
+
+  function removeFromCart(id) {
+    state.cart = state.cart.filter(function (item) { return item.id !== id; });
+    saveCart();
+    renderCart();
+    const target = elements.cartBody.querySelector('.qty-controls button') || elements.cartClose;
+    target.focus();
+  }
+
+  function setCartOpen(open, restoreFocus) {
+    const drawer = elements.cartDrawer;
+    if (open) {
+      if (drawer.classList.contains('open')) return;
+      state.lastCartFocus = document.activeElement;
+      drawer.removeAttribute('inert');
+      drawer.setAttribute('aria-hidden', 'false');
+      elements.cartBackdrop.hidden = false;
+      requestAnimationFrame(function () { elements.cartBackdrop.classList.add('visible'); });
+      drawer.classList.add('open');
+      elements.cartToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('dialog-open');
+      window.setTimeout(function () { elements.cartClose.focus(); }, 20);
+      return;
+    }
+    if (!drawer.classList.contains('open')) return;
+    drawer.classList.remove('open');
+    elements.cartBackdrop.classList.remove('visible');
+    drawer.setAttribute('aria-hidden', 'true');
+    drawer.setAttribute('inert', '');
+    elements.cartToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('dialog-open');
+    window.setTimeout(function () { elements.cartBackdrop.hidden = true; }, 220);
+    if (restoreFocus !== false && state.lastCartFocus && state.lastCartFocus.isConnected) state.lastCartFocus.focus();
+  }
+
+  function openCheckout() {
+    if (!state.cart.length) return;
+    state.checkoutTrigger = elements.checkoutButton;
+    elements.checkoutSummary.replaceChildren();
+    let total = 0;
+    state.cart.forEach(function (line) {
+      const product = state.products.find(function (item) { return item.id === line.id; });
+      if (!product) return;
+      const amount = product.precio * line.qty;
+      total += amount;
+      const item = makeElement('li', 'checkout-line');
+      item.append(makeElement('span', '', product.nombre + ' × ' + line.qty));
+      item.append(makeElement('strong', '', money(amount)));
+      elements.checkoutSummary.append(item);
+    });
+    elements.checkoutTotal.textContent = money(total);
+    setCartOpen(false, false);
+    elements.checkoutDialog.showModal();
+    document.body.classList.add('dialog-open');
+    window.setTimeout(function () { elements.checkoutClose.focus(); }, 0);
+  }
+
   function openDetails(product, trigger) {
     state.lastDialogFocus = trigger || document.activeElement;
     elements.dialogImage.src = product.foto;
@@ -179,6 +357,11 @@
     elements.dialogName.textContent = product.nombre;
     elements.dialogSpecs.textContent = product.tamano + ' · ' + product.concentracion;
     elements.dialogDescription.textContent = product.descripcion;
+    elements.dialogPrice.textContent = money(product.precio);
+    elements.dialogAdd.onclick = function () {
+      addToCart(product.id);
+      elements.productDialog.close();
+    };
     if (!elements.productDialog.open) elements.productDialog.showModal();
     window.setTimeout(function () { elements.dialogClose.focus(); }, 0);
   }
@@ -215,7 +398,7 @@
       const products = await response.json();
       if (!Array.isArray(products) || !products.length) throw new Error('Product data is empty');
       state.products = products.filter(function (product) {
-        return product && product.id && product.nombre && product.foto;
+        return product && product.id && product.nombre && product.foto && Number(product.precio) > 0;
       });
       state.favorites = new Set(Array.from(state.favorites).filter(function (id) {
         return state.products.some(function (product) { return product.id === id; });
@@ -224,7 +407,9 @@
       updateFavoritesToggle();
       elements.controls.hidden = false;
       elements.favoritesToggle.hidden = false;
+      elements.cartToggle.hidden = false;
       renderProducts();
+      renderCart();
     } catch (error) {
       showLoadError();
     }
@@ -253,14 +438,48 @@
     renderProducts();
     document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+  elements.cartToggle.addEventListener('click', function () { setCartOpen(true); });
+  elements.cartClose.addEventListener('click', function () { setCartOpen(false); });
+  elements.cartBackdrop.addEventListener('click', function () { setCartOpen(false); });
+  elements.checkoutButton.addEventListener('click', openCheckout);
+  elements.checkoutClose.addEventListener('click', function () { elements.checkoutDialog.close(); });
+  elements.checkoutReturn.addEventListener('click', function () { elements.checkoutDialog.close(); });
+  elements.checkoutDialog.addEventListener('click', function (event) {
+    if (event.target === elements.checkoutDialog) elements.checkoutDialog.close();
+  });
+  elements.checkoutDialog.addEventListener('close', function () {
+    document.body.classList.remove('dialog-open');
+    if (state.checkoutTrigger && state.checkoutTrigger.isConnected) {
+      setCartOpen(true);
+    }
+  });
   elements.dialogClose.addEventListener('click', function () { elements.productDialog.close(); });
-  elements.dialogCloseAction.addEventListener('click', function () { elements.productDialog.close(); });
   elements.productDialog.addEventListener('click', function (event) {
     if (event.target === elements.productDialog) elements.productDialog.close();
   });
   elements.productDialog.addEventListener('close', function () {
     if (state.lastDialogFocus && state.lastDialogFocus.isConnected) state.lastDialogFocus.focus();
   });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && elements.cartDrawer.classList.contains('open')) {
+      event.preventDefault();
+      setCartOpen(false);
+      return;
+    }
+    if (event.key !== 'Tab' || !elements.cartDrawer.classList.contains('open')) return;
+    const focusable = Array.from(elements.cartDrawer.querySelectorAll('button:not(:disabled), a[href], select, input'));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
 
+  updateCartCount();
   loadProducts();
 }());

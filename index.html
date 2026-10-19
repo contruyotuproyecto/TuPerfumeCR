@@ -10,7 +10,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261019-2">
+  <link rel="stylesheet" href="styles.css?v=20261019-3">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CR">
   <meta property="og:title" content="Perfumes en Costa Rica | Tu Perfume CR">
@@ -50,6 +50,10 @@
       <button class="icon-action" id="favoritesToggle" type="button" aria-label="Mostrar favoritos" aria-pressed="false" title="Mostrar favoritos" hidden>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10.1-8.8 10.1S3.2 13.8 3.2 8.7A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.7Z"/></svg>
         <span class="action-label">Favoritos</span>
+      </button>
+      <button class="icon-action" id="cartToggle" type="button" aria-label="Abrir carrito; 0 productos" aria-controls="cartDrawer" aria-expanded="false" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 3h2l2.2 11.1a2 2 0 0 0 2 1.6h9.3a2 2 0 0 0 2-1.6L21 8H5"/></svg>
+        <span class="action-label">Carrito</span><span class="cart-count" id="cartCount" aria-hidden="true">0</span>
       </button>
       <a class="button-outline header-catalog-link" href="#catalogo">Ver catálogo</a>
     </div>
@@ -118,6 +122,8 @@
           <div class="product-meta"><span class="product-brand">Rasasi</span><span>Hombre</span></div>
           <h3 class="product-name-static">Hawas Ice</h3>
           <p class="product-description">Perfil fresco, frutal y acuático con un fondo amaderado.</p>
+          <p class="product-price"><span>Precio</span><strong>₡24 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -129,6 +135,8 @@
           <div class="product-meta"><span class="product-brand">Armaf</span><span>Hombre</span></div>
           <h3 class="product-name-static">Odyssey Mandarin Sky</h3>
           <p class="product-description">Aroma cítrico y dulce para quien disfruta fragancias intensas con salida frutal.</p>
+          <p class="product-price"><span>Precio</span><strong>₡15 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -140,6 +148,8 @@
           <div class="product-meta"><span class="product-brand">Armaf</span><span>Hombre</span></div>
           <h3 class="product-name-static">Odyssey Aqua</h3>
           <p class="product-description">Aroma cítrico y aromático con un carácter fresco para el día.</p>
+          <p class="product-price"><span>Precio</span><strong>₡21 500</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -151,6 +161,8 @@
           <div class="product-meta"><span class="product-brand">Armaf</span><span>Hombre</span></div>
           <h3 class="product-name-static">Club de Nuit Intense</h3>
           <p class="product-description">Perfil cítrico y amaderado, pensado para quien busca una fragancia de presencia marcada.</p>
+          <p class="product-price"><span>Precio</span><strong>₡17 000</strong></p>
+
           <p class="product-spec">105 ml · Eau de Toilette</p>
         </div>
       </article>
@@ -162,6 +174,8 @@
           <div class="product-meta"><span class="product-brand">Lattafa</span><span>Mujer</span></div>
           <h3 class="product-name-static">Yara Rosa</h3>
           <p class="product-description">Aroma dulce, floral y cremoso dentro de la colección Yara.</p>
+          <p class="product-price"><span>Precio</span><strong>₡12 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -173,6 +187,8 @@
           <div class="product-meta"><span class="product-brand">Lattafa</span><span>Mujer</span></div>
           <h3 class="product-name-static">Yara Tous</h3>
           <p class="product-description">Perfil frutal tropical con notas cremosas para disfrutar a cualquier hora.</p>
+          <p class="product-price"><span>Precio</span><strong>₡14 500</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -184,6 +200,8 @@
           <div class="product-meta"><span class="product-brand">Lattafa</span><span>Mujer</span></div>
           <h3 class="product-name-static">Yara Moi</h3>
           <p class="product-description">Aroma dulce y floral con un fondo cálido y envolvente.</p>
+          <p class="product-price"><span>Precio</span><strong>₡14 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -195,6 +213,8 @@
           <div class="product-meta"><span class="product-brand">Lattafa</span><span>Hombre</span></div>
           <h3 class="product-name-static">Asad Elixir</h3>
           <p class="product-description">Perfil ambarado y especiado con notas de madera y vainilla.</p>
+          <p class="product-price"><span>Precio</span><strong>₡15 500</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -206,6 +226,8 @@
           <div class="product-meta"><span class="product-brand">Lattafa</span><span>Hombre</span></div>
           <h3 class="product-name-static">Fakhar</h3>
           <p class="product-description">Fragancia masculina de carácter fresco y amaderado.</p>
+          <p class="product-price"><span>Precio</span><strong>₡13 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -217,6 +239,8 @@
           <div class="product-meta"><span class="product-brand">Lattafa</span><span>Unisex</span></div>
           <h3 class="product-name-static">Bade&#x27;e Al Oud Honor &amp; Glory</h3>
           <p class="product-description">Aroma unisex dulce y especiado con un carácter cálido.</p>
+          <p class="product-price"><span>Precio</span><strong>₡16 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -228,6 +252,8 @@
           <div class="product-meta"><span class="product-brand">Rasasi</span><span>Mujer</span></div>
           <h3 class="product-name-static">Hawas for Her</h3>
           <p class="product-description">Perfil floral y frutal con un carácter dulce y femenino.</p>
+          <p class="product-price"><span>Precio</span><strong>₡14 500</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -239,6 +265,8 @@
           <div class="product-meta"><span class="product-brand">Rasasi</span><span>Hombre</span></div>
           <h3 class="product-name-static">Hawas Tropical</h3>
           <p class="product-description">Fragancia fresca y tropical para quienes disfrutan los acordes frutales.</p>
+          <p class="product-price"><span>Precio</span><strong>₡19 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -250,6 +278,8 @@
           <div class="product-meta"><span class="product-brand">Afnan</span><span>Hombre</span></div>
           <h3 class="product-name-static">9 PM</h3>
           <p class="product-description">Aroma dulce y especiado con matices frutales y cálidos.</p>
+          <p class="product-price"><span>Precio</span><strong>₡18 000</strong></p>
+
           <p class="product-spec">100 ml · Eau de Parfum</p>
         </div>
       </article>
@@ -261,6 +291,8 @@
           <div class="product-meta"><span class="product-brand">Afnan</span><span>Unisex</span></div>
           <h3 class="product-name-static">9 PM Elixir</h3>
           <p class="product-description">Una interpretación más especiada y amaderada dentro de la línea 9 PM.</p>
+          <p class="product-price"><span>Precio</span><strong>₡22 000</strong></p>
+
           <p class="product-spec">100 ml · Parfum Intense</p>
         </div>
       </article>
@@ -272,6 +304,8 @@
           <div class="product-meta"><span class="product-brand">Carolina Herrera</span><span>Hombre</span></div>
           <h3 class="product-name-static">212 VIP Men</h3>
           <p class="product-description">Fragancia masculina de carácter urbano, dulce y amaderado.</p>
+          <p class="product-price"><span>Precio</span><strong>₡35 500</strong></p>
+
           <p class="product-spec">100 ml · Eau de Toilette</p>
         </div>
       </article>
@@ -292,7 +326,7 @@
           <img src="imagenes/blog/perfume-fresco.jpg" alt="Frasco claro de perfume en una composición luminosa" width="1400" height="1867" loading="lazy">
         </a>
         <div class="blog-card-copy">
-          <p class="article-meta">Clima · 5 min de lectura</p>
+          <p class="article-meta">Clima</p>
           <h3><a href="articulos/perfumes-para-el-calor.html">Perfumes frescos para el calor de Costa Rica</a></h3>
           <p>Cítricos, notas aromáticas y perfiles tropicales para días cálidos y húmedos.</p>
           <a class="text-link" href="articulos/perfumes-para-el-calor.html">Leer artículo <span aria-hidden="true">→</span></a>
@@ -303,7 +337,7 @@
           <img src="imagenes/blog/perfume-noche.jpg" alt="Frasco de perfume ámbar sobre una tela dorada" width="1400" height="2488" loading="lazy">
         </a>
         <div class="blog-card-copy">
-          <p class="article-meta">Ocasiones · 4 min de lectura</p>
+          <p class="article-meta">Ocasiones</p>
           <h3><a href="articulos/perfumes-para-la-noche.html">Perfumes para la noche: cálidos, especiados o dulces</a></h3>
           <p>Tres perfiles del catálogo para cenas, eventos y salidas, con consejos para aplicar sin excederse.</p>
           <a class="text-link" href="articulos/perfumes-para-la-noche.html">Leer artículo <span aria-hidden="true">→</span></a>
@@ -314,7 +348,7 @@
           <img src="imagenes/blog/perfume-ocasion.jpg" alt="Frasco rosado de perfume Chanel Coco rodeado de pétalos" width="1400" height="1019" loading="lazy">
         </a>
         <div class="blog-card-copy">
-          <p class="article-meta">Guía · 6 min de lectura</p>
+          <p class="article-meta">Guía</p>
           <h3><a href="articulos/perfume-segun-la-ocasion.html">Cómo elegir perfume según la ocasión</a></h3>
           <p>Una forma sencilla de pensar en perfumes para todos los días, regalos y momentos especiales.</p>
           <a class="text-link" href="articulos/perfume-segun-la-ocasion.html">Leer artículo <span aria-hidden="true">→</span></a>
@@ -338,9 +372,38 @@
         <a href="guia.html">Cómo elegir</a>
       </nav>
     </div>
-    <div class="footer-bottom">Tu Perfume CR · Perfumería en Costa Rica</div>
+    <div class="footer-bottom">Tu Perfume CR · Perfumería en Costa Rica · Proyecto demostrativo · No se procesan pedidos ni pagos.</div>
   </div>
 </footer>
+
+<button class="backdrop" id="drawerBackdrop" type="button" aria-label="Cerrar carrito" hidden></button>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert tabindex="-1">
+  <div class="drawer-head">
+    <h2 id="cartTitle">Tu carrito</h2>
+    <button class="close-button" id="cartClose" type="button" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Subtotal</span><strong id="cartTotal">₡0</strong></div>
+    <button class="checkout-button" id="checkoutButton" type="button" disabled>Continuar al pago</button>
+  </div>
+</aside>
+
+<dialog class="checkout-dialog" id="checkoutDialog" aria-labelledby="checkoutTitle" aria-describedby="checkoutNotice">
+  <div class="checkout-shell">
+    <button class="close-button checkout-close" id="checkoutClose" type="button" aria-label="Volver al carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+    <p class="section-kicker">Resumen</p>
+    <h2 id="checkoutTitle">Tu selección</h2>
+    <ul class="checkout-summary" id="checkoutSummary"></ul>
+    <div class="total-row checkout-total"><span>Total</span><strong id="checkoutTotal">₡0</strong></div>
+    <p class="checkout-notice" id="checkoutNotice">Proyecto demostrativo · No se procesan pedidos ni pagos.</p>
+    <button class="add-button" id="checkoutReturn" type="button">Volver al carrito</button>
+  </div>
+</dialog>
 
 <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogName" aria-describedby="dialogDescription">
   <div class="dialog-shell">
@@ -353,12 +416,14 @@
       <h2 id="dialogName"></h2>
       <p class="dialog-spec" id="dialogSpecs"></p>
       <p class="dialog-description" id="dialogDescription"></p>
-      <button class="add-button" id="dialogCloseAction" type="button">Seguir explorando</button>
+      <p class="dialog-price-label">Precio</p>
+      <p class="dialog-price" id="dialogPrice"></p>
+      <button class="add-button" id="dialogAdd" type="button">Agregar al carrito</button>
     </div>
   </div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-<script src="app.js?v=20261019-2" defer></script>
+<script src="app.js?v=20261019-3" defer></script>
 </body>
 </html>
 

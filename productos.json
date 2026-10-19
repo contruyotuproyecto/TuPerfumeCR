@@ -6,6 +6,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 24000,
     "foto": "imagenes/perfumes/hawas-ice.jpg",
     "descripcion": "Perfil fresco, frutal y acuático con un fondo amaderado."
   },
@@ -16,6 +17,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 15000,
     "foto": "imagenes/perfumes/odyssey-mandarin-sky.jpg",
     "descripcion": "Aroma cítrico y dulce para quien disfruta fragancias intensas con salida frutal."
   },
@@ -26,6 +28,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 21500,
     "foto": "imagenes/perfumes/odyssey-aqua.jpg",
     "descripcion": "Aroma cítrico y aromático con un carácter fresco para el día."
   },
@@ -36,6 +39,7 @@
     "tamano": "105 ml",
     "concentracion": "Eau de Toilette",
     "categoria": "Hombre",
+    "precio": 17000,
     "foto": "imagenes/perfumes/club-de-nuit-intense.jpg",
     "descripcion": "Perfil cítrico y amaderado, pensado para quien busca una fragancia de presencia marcada."
   },
@@ -46,6 +50,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
+    "precio": 12000,
     "foto": "imagenes/perfumes/yara-rose.jpg",
     "descripcion": "Aroma dulce, floral y cremoso dentro de la colección Yara."
   },
@@ -56,6 +61,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
+    "precio": 14500,
     "foto": "imagenes/perfumes/yara-tous.jpg",
     "descripcion": "Perfil frutal tropical con notas cremosas para disfrutar a cualquier hora."
   },
@@ -66,6 +72,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
+    "precio": 14000,
     "foto": "imagenes/perfumes/yara-moi.jpg",
     "descripcion": "Aroma dulce y floral con un fondo cálido y envolvente."
   },
@@ -76,6 +83,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 15500,
     "foto": "imagenes/perfumes/asad-elixir.jpg",
     "descripcion": "Perfil ambarado y especiado con notas de madera y vainilla."
   },
@@ -86,6 +94,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 13000,
     "foto": "imagenes/perfumes/fakhar-black.jpg",
     "descripcion": "Fragancia masculina de carácter fresco y amaderado."
   },
@@ -96,6 +105,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Unisex",
+    "precio": 16000,
     "foto": "imagenes/perfumes/honor-and-glory.jpg",
     "descripcion": "Aroma unisex dulce y especiado con un carácter cálido."
   },
@@ -106,6 +116,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
+    "precio": 14500,
     "foto": "imagenes/perfumes/hawas-for-her.jpg",
     "descripcion": "Perfil floral y frutal con un carácter dulce y femenino."
   },
@@ -116,6 +127,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 19000,
     "foto": "imagenes/perfumes/hawas-tropical.jpg",
     "descripcion": "Fragancia fresca y tropical para quienes disfrutan los acordes frutales."
   },
@@ -126,6 +138,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
+    "precio": 18000,
     "foto": "imagenes/perfumes/afnan-9pm.jpg",
     "descripcion": "Aroma dulce y especiado con matices frutales y cálidos."
   },
@@ -136,6 +149,7 @@
     "tamano": "100 ml",
     "concentracion": "Parfum Intense",
     "categoria": "Unisex",
+    "precio": 22000,
     "foto": "imagenes/perfumes/afnan-9pm-elixir.jpg",
     "descripcion": "Una interpretación más especiada y amaderada dentro de la línea 9 PM."
   },
@@ -146,6 +160,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Toilette",
     "categoria": "Hombre",
+    "precio": 35500,
     "foto": "imagenes/perfumes/212-vip-men.jpg",
     "descripcion": "Fragancia masculina de carácter urbano, dulce y amaderado."
   }
