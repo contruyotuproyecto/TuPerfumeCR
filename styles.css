@@ -91,11 +91,11 @@ main { min-height: 60vh; }
   opacity: .86;
 }
 @keyframes hero-glow-breathe {
-  0%, 100% { opacity: .68; transform: translate3d(-68px, 14px, 0) scale(1.02); }
-  50% { opacity: 1; transform: translate3d(62px, -16px, 0) scale(1.12); }
+  0%, 100% { opacity: .68; transform: translate3d(-98px, 14px, 0) scale(1.03); }
+  50% { opacity: 1; transform: translate3d(92px, -16px, 0) scale(1.08); }
 }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-copy::before { animation: hero-glow-breathe 10s ease-in-out infinite; }
+  .hero-copy::before { animation: hero-glow-breathe 7s ease-in-out infinite; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-copy::before { animation: none; opacity: .86; transform: none; }
