@@ -10,7 +10,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261019-7">
+  <link rel="stylesheet" href="styles.css?v=20261019-9">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CR">
   <meta property="og:title" content="Perfumes en Costa Rica | Tu Perfume CR">
@@ -63,7 +63,13 @@
   <section class="hero container" aria-labelledby="heroTitle">
     <div class="hero-panel">
       <div class="hero-copy">
-        <p class="eyebrow">Tu perfumería en Costa Rica</p>
+        <div class="hero-copy-heading">
+          <p class="eyebrow">Tu perfumería en Costa Rica</p>
+          <button class="hero-motion-toggle" id="heroMotionToggle" type="button" aria-label="Animación del fondo" aria-pressed="false" title="Pausar animación de fondo">
+            <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+            <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>
+          </button>
+        </div>
         <h1 id="heroTitle">Encontrá tu próximo <span>perfume favorito.</span></h1>
         <p class="hero-description">Explorá perfumes árabes y clásicos de diseñador para mujer, hombre y uso unisex. Hay aromas frescos, florales, dulces y amaderados para distintas ocasiones.</p>
         <div class="hero-actions">
@@ -422,7 +428,7 @@
   </div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-<script src="app.js?v=20261019-4" defer></script>
+<script src="app.js?v=20261019-5" defer></script>
 </body>
 </html>
 
