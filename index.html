@@ -10,7 +10,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20261019-5">
+  <link rel="stylesheet" href="styles.css?v=20261019-6">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CR">
   <meta property="og:title" content="Perfumes en Costa Rica | Tu Perfume CR">
@@ -111,7 +111,7 @@
         </select>
       </label>
     </div>
-    <p class="product-count" id="productCount" role="status" aria-live="polite" aria-atomic="true">15 fragancias</p>
+    <p class="product-count" id="productCount" role="status" aria-live="polite" aria-atomic="true" tabindex="-1">15 fragancias</p>
     <div class="products-grid" id="productsGrid" aria-busy="false">
       <!-- El catálogo está disponible en el HTML inicial para carga rápida e indexación. -->
       <article class="product-card">
@@ -406,10 +406,10 @@
 </dialog>
 
 <dialog class="product-dialog" id="productDialog" aria-labelledby="dialogName" aria-describedby="dialogDescription">
+  <button class="close-button dialog-close" id="dialogClose" type="button" aria-label="Cerrar detalles">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+  </button>
   <div class="dialog-shell">
-    <button class="close-button dialog-close" id="dialogClose" type="button" aria-label="Cerrar detalles">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
-    </button>
     <div class="dialog-photo"><img id="dialogImage" src="" alt="" width="680" height="714"></div>
     <div class="dialog-copy">
       <p class="dialog-kicker" id="dialogBrand"></p>
@@ -423,7 +423,7 @@
   </div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-<script src="app.js?v=20261019-3" defer></script>
+<script src="app.js?v=20261019-4" defer></script>
 </body>
 </html>
 

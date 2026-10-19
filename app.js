@@ -14,6 +14,8 @@
     lastDialogFocus: null,
     lastCartFocus: null,
     checkoutTrigger: null,
+    cartBackdropTimer: 0,
+    cartBackdropFrame: 0,
     toastTimer: 0
   };
 
@@ -143,6 +145,7 @@
     const active = state.favorites.has(product.id);
     const button = makeElement('button', 'favorite-button');
     button.type = 'button';
+    button.dataset.productId = product.id;
     button.setAttribute('aria-label', (active ? 'Quitar ' : 'Guardar ') + product.nombre + ' ' + (active ? 'de' : 'en') + ' favoritos');
     button.setAttribute('aria-pressed', String(active));
     button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10.1-8.8 10.1S3.2 13.8 3.2 8.7A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.7Z"/></svg>';
@@ -170,8 +173,17 @@
     if (state.favoritesOnly) elements.count.textContent += ' · favoritos';
     if (!list.length) {
       const empty = makeElement('div', 'empty-state');
-      empty.append(makeElement('h3', '', state.favoritesOnly ? 'Aún no guardaste favoritos' : 'No encontramos resultados'));
-      empty.append(makeElement('p', '', state.favoritesOnly ? 'Usá el corazón en una fragancia para guardarla en esta lista.' : 'Probá otra búsqueda o elegí una categoría distinta.'));
+      const hasFavorites = state.favorites.size > 0;
+      if (state.favoritesOnly && hasFavorites) {
+        empty.append(makeElement('h3', '', 'No hay favoritos con estos filtros'));
+        empty.append(makeElement('p', '', 'Probá quitar la búsqueda o elegir otra categoría.'));
+      } else if (state.favoritesOnly) {
+        empty.append(makeElement('h3', '', 'Aún no guardaste favoritos'));
+        empty.append(makeElement('p', '', 'Usá el corazón en una fragancia para guardarla en esta lista.'));
+      } else {
+        empty.append(makeElement('h3', '', 'No encontramos resultados'));
+        empty.append(makeElement('p', '', 'Probá otra búsqueda o elegí una categoría distinta.'));
+      }
       elements.grid.append(empty);
     } else {
       list.forEach(function (product) { elements.grid.append(productCard(product)); });
@@ -192,6 +204,10 @@
     writeStorage(FAVORITES_KEY, Array.from(state.favorites));
     updateFavoritesToggle();
     renderProducts();
+    const nextFavoriteButton = Array.from(elements.grid.querySelectorAll('.favorite-button')).find(function (button) {
+      return button.dataset.productId === String(id);
+    });
+    (nextFavoriteButton || elements.count).focus();
   }
 
   function updateFavoritesToggle() {
@@ -224,10 +240,16 @@
   }
 
   function renderCart() {
-    state.cart = state.cart.filter(function (line) {
-      return line && state.products.some(function (product) { return product.id === line.id; }) && Number(line.qty) > 0;
-    }).map(function (line) {
-      return { id: line.id, qty: Math.min(99, Math.floor(Number(line.qty))) };
+    const normalizedCart = new Map();
+    state.cart.forEach(function (line) {
+      const quantity = Number(line && line.qty);
+      if (!line || !state.products.some(function (product) { return product.id === line.id; }) || !Number.isFinite(quantity) || quantity < 1) return;
+      const wholeQuantity = Math.floor(quantity);
+      if (wholeQuantity < 1) return;
+      normalizedCart.set(line.id, Math.min(99, (normalizedCart.get(line.id) || 0) + wholeQuantity));
+    });
+    state.cart = Array.from(normalizedCart, function (entry) {
+      return { id: entry[0], qty: entry[1] };
     });
     saveCart();
     updateCartCount();
@@ -263,6 +285,8 @@
       const decrease = makeElement('button', '', '−');
       decrease.type = 'button';
       decrease.setAttribute('aria-label', 'Quitar una unidad de ' + product.nombre);
+      decrease.dataset.cartProduct = product.id;
+      decrease.dataset.cartAction = 'decrease';
       decrease.addEventListener('click', function () { changeQuantity(product.id, -1); });
       const value = makeElement('span', 'qty-value', String(line.qty));
       value.setAttribute('aria-label', 'Cantidad');
@@ -270,6 +294,8 @@
       increase.type = 'button';
       increase.setAttribute('aria-label', 'Añadir una unidad de ' + product.nombre);
       increase.disabled = line.qty >= 99;
+      increase.dataset.cartProduct = product.id;
+      increase.dataset.cartAction = 'increase';
       increase.addEventListener('click', function () { changeQuantity(product.id, 1); });
       quantity.append(decrease, value, increase);
       copy.append(quantity);
@@ -286,11 +312,27 @@
   function changeQuantity(id, difference) {
     const line = state.cart.find(function (item) { return item.id === id; });
     if (!line) return;
+    const activeAction = document.activeElement && document.activeElement.dataset.cartAction;
     line.qty += difference;
     if (line.qty <= 0) state.cart = state.cart.filter(function (item) { return item.id !== id; });
     else line.qty = Math.min(99, line.qty);
     saveCart();
     renderCart();
+    focusCartControl(id, activeAction || (difference > 0 ? 'increase' : 'decrease'));
+  }
+
+  function focusCartControl(id, action) {
+    const buttons = Array.from(elements.cartBody.querySelectorAll('button[data-cart-product]'));
+    let target = buttons.find(function (button) {
+      return button.dataset.cartProduct === String(id) && button.dataset.cartAction === action && !button.disabled;
+    });
+    if (!target && action === 'increase') {
+      target = buttons.find(function (button) {
+        return button.dataset.cartProduct === String(id) && button.dataset.cartAction === 'decrease' && !button.disabled;
+      });
+    }
+    if (!target) target = elements.cartBody.querySelector('.qty-controls button:not(:disabled)') || elements.cartClose;
+    target.focus();
   }
 
   function removeFromCart(id) {
@@ -301,15 +343,27 @@
     target.focus();
   }
 
-  function setCartOpen(open, restoreFocus) {
+  function setCartOpen(open, restoreFocus, preserveReturnFocus) {
     const drawer = elements.cartDrawer;
     if (open) {
       if (drawer.classList.contains('open')) return;
-      state.lastCartFocus = document.activeElement;
+      window.clearTimeout(state.cartBackdropTimer);
+      state.cartBackdropTimer = 0;
+      if (state.cartBackdropFrame) cancelAnimationFrame(state.cartBackdropFrame);
+      state.cartBackdropFrame = 0;
+      if (!preserveReturnFocus) {
+        const activeElement = document.activeElement;
+        state.lastCartFocus = activeElement && activeElement !== document.body && activeElement !== document.documentElement
+          ? activeElement
+          : elements.cartToggle;
+      }
       drawer.removeAttribute('inert');
       drawer.setAttribute('aria-hidden', 'false');
       elements.cartBackdrop.hidden = false;
-      requestAnimationFrame(function () { elements.cartBackdrop.classList.add('visible'); });
+      state.cartBackdropFrame = requestAnimationFrame(function () {
+        if (drawer.classList.contains('open')) elements.cartBackdrop.classList.add('visible');
+        state.cartBackdropFrame = 0;
+      });
       drawer.classList.add('open');
       elements.cartToggle.setAttribute('aria-expanded', 'true');
       document.body.classList.add('dialog-open');
@@ -317,14 +371,26 @@
       return;
     }
     if (!drawer.classList.contains('open')) return;
+    window.clearTimeout(state.cartBackdropTimer);
+    state.cartBackdropTimer = 0;
+    if (state.cartBackdropFrame) cancelAnimationFrame(state.cartBackdropFrame);
+    state.cartBackdropFrame = 0;
     drawer.classList.remove('open');
     elements.cartBackdrop.classList.remove('visible');
     drawer.setAttribute('aria-hidden', 'true');
     drawer.setAttribute('inert', '');
     elements.cartToggle.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('dialog-open');
-    window.setTimeout(function () { elements.cartBackdrop.hidden = true; }, 220);
-    if (restoreFocus !== false && state.lastCartFocus && state.lastCartFocus.isConnected) state.lastCartFocus.focus();
+    state.cartBackdropTimer = window.setTimeout(function () {
+      if (!drawer.classList.contains('open')) elements.cartBackdrop.hidden = true;
+      state.cartBackdropTimer = 0;
+    }, 220);
+    if (restoreFocus !== false) {
+      const focusTarget = state.lastCartFocus && state.lastCartFocus.isConnected && !drawer.contains(state.lastCartFocus)
+        ? state.lastCartFocus
+        : elements.cartToggle;
+      focusTarget.focus();
+    }
   }
 
   function openCheckout() {
@@ -450,7 +516,7 @@
   elements.checkoutDialog.addEventListener('close', function () {
     document.body.classList.remove('dialog-open');
     if (state.checkoutTrigger && state.checkoutTrigger.isConnected) {
-      setCartOpen(true);
+      setCartOpen(true, true, true);
     }
   });
   elements.dialogClose.addEventListener('click', function () { elements.productDialog.close(); });
