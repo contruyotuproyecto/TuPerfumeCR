@@ -512,6 +512,14 @@
     this.title = paused ? 'Reanudar animación de fondo' : 'Pausar animación de fondo';
     elements.heroPanel.classList.toggle('motion-paused', paused);
   });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      elements.heroPanel.classList.toggle('motion-offscreen', !entries[0].isIntersecting);
+    }).observe(elements.heroPanel);
+  }
+  document.addEventListener('visibilitychange', function () {
+    elements.heroPanel.classList.toggle('motion-hidden', document.hidden);
+  });
   elements.cartToggle.addEventListener('click', function () { setCartOpen(true); });
   elements.cartClose.addEventListener('click', function () { setCartOpen(false); });
   elements.cartBackdrop.addEventListener('click', function () { setCartOpen(false); });
