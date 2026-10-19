@@ -7,10 +7,10 @@
 <meta name="theme-color" content="#f7f4fa"/>
 
 <!-- SEO + Compartir -->
-<meta name="description" content="Máscaras Therian artesanales hechas a mano en Costa Rica. Lobo, Zorro, Dragón, Gato, Ciervo y Búho. Envíos a todo el país por Correos de CR."/>
+<meta name="description" content="Máscaras Therian artesanales hechas a mano en Costa Rica. Explorá diseños de lobo, zorro, dragón, gato, ciervo y búho. Sitio demo; compras no habilitadas."/>
 <link rel="canonical" href="https://therian.labweb.top/"/>
 <meta property="og:title" content="Therian Masks CR | Máscaras Artesanales"/>
-<meta property="og:description" content="Máscaras Therian artesanales hechas a mano en Costa Rica. Envíos a todo el país."/>
+<meta property="og:description" content="Máscaras Therian artesanales hechas a mano en Costa Rica. Explorá la colección en este sitio demo; compras no habilitadas."/>
 <meta property="og:url" content="https://therian.labweb.top/"/>
 <meta property="og:image" content="https://therian.labweb.top/logo.png"/>
 <!-- Favicon -->
@@ -246,7 +246,7 @@
       color:var(--text);
     }
     .process-title { color:var(--purple2); font-family:'Cinzel',serif; font-size:1rem; white-space:nowrap; padding-top:0.15rem; }
-    .process-steps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0.75rem 1.25rem; list-style:none; }
+    .process-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem 1.25rem; list-style:none; }
     .process-steps li { position:relative; padding-left:1.8rem; color:var(--muted); font-size:0.87rem; line-height:1.4; }
     .process-step-number {
       position:absolute; left:0; top:0.03rem; width:1.25rem; height:1.25rem;
@@ -433,7 +433,6 @@
     .cart-body { flex: 1; overflow-y: auto; padding: 1rem; overscroll-behavior:contain; }
     .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
     .cart-empty-hint { margin-top:0.45rem; color:var(--muted2); font-size:0.88rem; }
-    #orderForm { margin:0; }
     .cart-item {
       display: flex; gap: 0.9rem; padding: 0.9rem;
       border: 1px solid var(--border); border-radius: var(--radius);
@@ -465,15 +464,6 @@
       padding:0.7rem 0.9rem; font-size:0.82rem; color:#60420e; margin-bottom:0.8rem; line-height:1.5;
     }
     .pay-notice strong { color:#4b3410; display:block; margin-bottom:0.15rem; }
-    .form-grp { margin-bottom: 0.7rem; }
-    .form-grp label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 0.3rem; }
-    .form-grp input {
-      width: 100%; border: 1px solid var(--border); border-radius: 8px;
-      min-height:44px; padding:0.6rem 0.8rem; font-family:'Nunito',sans-serif; font-size:1rem;
-      color: var(--text); transition: border-color 0.2s; background: #fff;
-    }
-    .form-grp input:focus { outline:3px solid var(--focus); outline-offset:2px; border-color:var(--purple); }
-    .form-grp input::placeholder { color: var(--muted2); }
     .wa-btn {
       width:100%; min-height:48px; background:#08734c;
       border:0; border-radius:10px; padding:0.85rem; color:#fff;
@@ -483,6 +473,19 @@
     }
     .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
     .wa-btn:disabled { background:#d8dedb; color:#3d4a42; cursor:not-allowed; transform:none; box-shadow:none; }
+    .demo-notice-dialog {
+      width:min(32rem, calc(100% - 2rem)); max-height:min(90vh, 40rem); margin:auto;
+      padding:0; border:1px solid var(--border); border-radius:16px; color:var(--text);
+      background:#fff; box-shadow:0 24px 72px rgba(24,17,38,0.28);
+    }
+    .demo-notice-dialog::backdrop { background:rgba(24,17,38,0.58); }
+    .demo-notice-content { padding:clamp(1.25rem, 5vw, 2rem); }
+    .demo-notice-kicker { margin:0 0 0.45rem; color:var(--purple2); font-size:0.78rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; }
+    .demo-notice-content h2 { margin:0 0 0.75rem; font-size:clamp(1.2rem, 4vw, 1.55rem); line-height:1.25; }
+    .demo-notice-content p:not(.demo-notice-kicker) { margin:0; line-height:1.6; color:var(--muted); }
+    .demo-notice-close { min-height:48px; width:100%; margin-top:1.25rem; border:0; border-radius:10px; background:var(--purple); color:#fff; font:800 1rem 'Nunito',sans-serif; cursor:pointer; }
+    .demo-notice-close:hover { background:var(--purple2); }
+    .demo-notice-close:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
 
     /* ── POP-OUT NOTIFICACIÓN ── */
     .popout {
@@ -741,7 +744,7 @@
 <a class="skip-link" href="#mainContent">Ir al contenido principal</a>
 
 <div class="topbar">
-  Envíos a todo Costa Rica por <strong>Correos de Costa Rica</strong> &nbsp;·&nbsp; Pago por <strong>SINPE Móvil o depósito</strong>
+  <strong>Sitio de demostración</strong> &nbsp;·&nbsp; Las compras y los pedidos por WhatsApp no están habilitados
 </div>
 
 <header>
@@ -784,7 +787,7 @@
     <div class="hero-copy">
       <p class="hero-kicker">Máscaras artesanales · Costa Rica</p>
       <h1 id="heroTitle">Máscaras <span>Therian</span></h1>
-      <p>Diseños hechos a mano para conectar con tu espíritu animal. Envíos a todo Costa Rica.</p>
+      <p>Explorá diseños hechos a mano para conectar con tu espíritu animal.</p>
       <div class="hero-actions">
         <a class="hero-cta" href="#catalogo">Ver máscaras</a>
         <a class="hero-story-link" href="historia.html">¿Qué es un Therian?</a>
@@ -796,14 +799,13 @@
 
 <section class="payment-bar" aria-labelledby="processTitle">
   <div class="payment-bar-inner">
-    <h2 class="process-title" id="processTitle">Cómo comprar</h2>
+    <h2 class="process-title" id="processTitle">Explorá la tienda</h2>
     <ol class="process-steps">
-      <li><span class="process-step-number" aria-hidden="true">1</span>Elegí tus máscaras y armá el carrito.</li>
-      <li><span class="process-step-number" aria-hidden="true">2</span>Enviá tu pedido por WhatsApp.</li>
-      <li><span class="process-step-number" aria-hidden="true">3</span>Confirmá el pago dentro de 2 horas.</li>
-      <li><span class="process-step-number" aria-hidden="true">4</span>Coordinamos el envío por Correos de Costa Rica.</li>
+      <li><span class="process-step-number" aria-hidden="true">1</span>Explorá los diseños disponibles.</li>
+      <li><span class="process-step-number" aria-hidden="true">2</span>Probá el carrito de demostración.</li>
+      <li><span class="process-step-number" aria-hidden="true">3</span>Las compras y los pedidos por WhatsApp no están habilitados.</li>
     </ol>
-    <p class="payment-details">Pago por SINPE Móvil al <strong>6007-2890</strong> a nombre de <strong>Paulo J</strong> o por depósito bancario.</p>
+    <p class="payment-details">Contacto de referencia: móvil <strong>X X X X X</strong> · <strong>Propietario</strong></p>
   </div>
 </section>
 
@@ -832,14 +834,14 @@
 <footer>
   <div class="ft-logo">Therian Masks CR</div>
   <p>Máscaras Therian para Costa Rica</p>
-  <p style="margin-top:0.4rem">Pagos: SINPE Móvil <strong>6007-2890</strong> · Paulo J · Envíos: Correos de Costa Rica</p>
+  <p style="margin-top:0.4rem">Sitio demo: compras no habilitadas · Móvil: <strong>X X X X X</strong> · Propietario</p>
 </footer>
 
 <!-- OVERLAY + CARRITO SIDEBAR -->
 <div class="overlay" id="overlay" aria-hidden="true" onclick="setCartOpen(false)"></div>
 <aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert>
   <div class="cart-head">
-    <h2 id="cartTitle">Tu pedido</h2>
+    <h2 id="cartTitle">Tu carrito</h2>
     <button class="close-x" type="button" aria-label="Cerrar carrito" onclick="setCartOpen(false)">✕</button>
   </div>
   <div class="cart-body" id="cartBody"></div>
@@ -848,26 +850,15 @@
       <span>Subtotal</span>
       <span class="total-amount" id="cartTotal">₡0</span>
     </div>
-    <div class="envio-note">+ Costo de envío según tu ubicación (Correos de CR)</div>
+    <div class="envio-note">Carrito de demostración: el subtotal es referencial.</div>
     <div class="pay-notice">
-      <strong>Tenés 2 horas para confirmar el pago</strong>
-      SINPE Móvil: <strong>6007-2890</strong> · Paulo J<br/>
-      O depósito bancario (te indicamos los datos por WhatsApp)
+      <strong>Esta es una página demo.</strong>
+      Las compras y los pedidos por WhatsApp no están habilitados en este momento.
     </div>
-    <form id="orderForm" onsubmit="enviarWA(event)">
-      <div class="form-grp">
-        <label for="clientName">Tu nombre completo *</label>
-        <input type="text" id="clientName" name="name" placeholder="Ej: María González" autocomplete="name" required/>
-      </div>
-      <div class="form-grp">
-        <label for="clientCity">Provincia / Cantón *</label>
-        <input type="text" id="clientCity" name="location" placeholder="Ej: San José, Desamparados" autocomplete="address-level2" required/>
-      </div>
-      <button class="wa-btn" id="waSubmit" type="submit" disabled>
+      <button class="wa-btn" id="waSubmit" type="button" aria-haspopup="dialog" aria-controls="demoNotice" onclick="mostrarAvisoDemo()" disabled>
       <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Enviar Pedido por WhatsApp
+      Contacto por WhatsApp
       </button>
-    </form>
   </div>
 </aside>
 
@@ -908,8 +899,16 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 
+<dialog class="demo-notice-dialog" id="demoNotice" aria-labelledby="demoNoticeTitle" aria-describedby="demoNoticeText">
+  <div class="demo-notice-content">
+    <p class="demo-notice-kicker">Aviso de demostración</p>
+    <h2 id="demoNoticeTitle">Contacto por WhatsApp no disponible</h2>
+    <p id="demoNoticeText">Esta página es una demo. Las compras y los pedidos por WhatsApp no están habilitados en este momento. No se enviará ningún mensaje ni pedido.</p>
+    <button class="demo-notice-close" type="button" onclick="cerrarAvisoDemo()" autofocus>Entendido</button>
+  </div>
+</dialog>
+
 <script>
-  const WA_NUMBER = "50660072890";
   let productos = [];
   let cart = [];
   try {
@@ -1264,21 +1263,15 @@
     setCartOpen(!document.getElementById('cartSidebar').classList.contains('open'));
   }
 
-  function enviarWA(event) {
-    if (event) event.preventDefault();
+  function mostrarAvisoDemo() {
     if (!cart.length) { showToast('Tu carrito está vacío.'); return; }
-    const name = document.getElementById('clientName').value.trim();
-    const city = document.getElementById('clientCity').value.trim();
-    if (!name) { document.getElementById('clientName').reportValidity(); return; }
-    if (!city) { document.getElementById('clientCity').reportValidity(); return; }
-    const total = cart.reduce((s,i) => s + i.precio * i.qty, 0);
-    let msg = `🎭 *PEDIDO — Therian Masks CR*\n\n`;
-    msg += `👤 *Cliente:* ${name}\n📍 *Ubicación:* ${city}\n📦 *Envío:* Correos de Costa Rica\n\n🛒 *Detalle:*\n`;
-    cart.forEach(i => { msg += `  • ${i.nombre} ×${i.qty} → ₡${(i.precio*i.qty).toLocaleString('es-CR')}\n`; });
-    msg += `\n💰 *TOTAL: ₡${total.toLocaleString('es-CR')}*\n\n`;
-    msg += `⏱️ _Quedo en espera de los datos de pago. Confirmo en máximo 2 horas._\n`;
-    msg += `✅ _Pago: SINPE Móvil 6007-2890 · Paulo J_`;
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
+    const notice = document.getElementById('demoNotice');
+    if (notice && !notice.open) notice.showModal();
+  }
+
+  function cerrarAvisoDemo() {
+    const notice = document.getElementById('demoNotice');
+    if (notice && notice.open) notice.close();
   }
 
   let popoutTimer = null;

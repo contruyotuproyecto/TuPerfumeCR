@@ -1,6 +1,6 @@
 # 🎭 Therian Masks CR
 
-Sitio web de tienda en línea para **Therian Masks CR**, negocio costarricense de máscaras Therian artesanales. Envíos a todo Costa Rica por Correos de CR.
+Catálogo web de demostración para **Therian Masks CR**, con máscaras Therian artesanales. Las compras y los pedidos por WhatsApp no están habilitados en este momento.
 
 🌐 **Sitio en vivo:** [contruyotuproyecto.github.io/therian-masks-cr](https://contruyotuproyecto.github.io/therian-masks-cr/)
 
@@ -28,24 +28,22 @@ therian-masks-cr/
 
 ## ✨ Funcionalidades
 
-- 🛒 Carrito de compras con cantidades y eliminación
+- 🛒 Carrito de demostración con cantidades y eliminación
 - 📱 Diseño responsive (móvil y escritorio)
 - 🔍 Filtros por categoría de máscara
 - ❤️ Lista de favoritos (wishlist)
-- 💬 Envío de pedido directo por **WhatsApp**
+- 💬 Aviso al intentar contacto por **WhatsApp**, sin enviar pedidos
 - 🔔 Notificación pop-out al agregar productos
 - 📖 Página blog sobre el origen de los Therians
 - 🗂️ Modal de detalle por producto
 
 ---
 
-## 🛍️ Cómo funciona el proceso de venta
+## 🛍️ Cómo funciona la demo
 
-1. El cliente agrega máscaras al carrito
-2. Envía el pedido por **WhatsApp** con su nombre y ubicación
-3. Tiene **2 horas** para confirmar el pago
-4. Pago por **SINPE Móvil al 6007-2890** (Paulo Jiménez) o depósito bancario
-5. Se coordina el envío por **Correos de Costa Rica**
+1. Explora las máscaras disponibles
+2. Prueba el carrito de demostración
+3. Las compras y los pedidos por WhatsApp no están habilitados en este momento
 
 ---
 
@@ -97,6 +95,6 @@ Editá el archivo `productos.json`. Cada producto tiene esta estructura:
 
 ## 📞 Contacto
 
-**SINPE Móvil:**
-**Nombre:** Paulo Jiménez  
-**Envíos:** Correos de Costa Rica 🇨🇷
+**Móvil:** X X X X X
+**Nombre:** Propietario
+**Estado:** sitio demo; compras no habilitadas
