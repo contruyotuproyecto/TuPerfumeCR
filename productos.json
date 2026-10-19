@@ -6,14 +6,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 24000,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/rasasi/hawas-ice-edp-100-ml",
-    "fechaPrecio": "2026-10-16",
     "foto": "imagenes/perfumes/hawas-ice.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/295.jpg",
-    "tendenciaLocal": true,
-    "descripcion": "Fragancia masculina citada entre los modelos más vendidos reportados por una perfumería costarricense."
+    "descripcion": "Perfil fresco, frutal y acuático con un fondo amaderado."
   },
   {
     "id": "armaf-odyssey-mandarin-sky",
@@ -22,14 +16,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 15000,
-    "fuentePrecio": "AhorraYa · categoría masculina",
-    "urlPrecio": "https://www.ahorraya.app/precios/categoria/perfumes-para-hombre",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/odyssey-mandarin-sky.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/112.jpg",
-    "tendenciaLocal": true,
-    "descripcion": "Modelo destacado como uno de los más vistos en la categoría masculina del comparador local."
+    "descripcion": "Aroma cítrico y dulce para quien disfruta fragancias intensas con salida frutal."
   },
   {
     "id": "armaf-odyssey-aqua",
@@ -38,14 +26,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 21500,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/armaf/odyssey-aqua-edp-100-ml",
-    "fechaPrecio": "2026-09-14",
     "foto": "imagenes/perfumes/odyssey-aqua.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/102.jpg",
-    "tendenciaLocal": true,
-    "descripcion": "Fragancia masculina incluida entre los modelos de mayor venta reportados por una perfumería costarricense."
+    "descripcion": "Aroma cítrico y aromático con un carácter fresco para el día."
   },
   {
     "id": "armaf-club-de-nuit-intense",
@@ -54,14 +36,8 @@
     "tamano": "105 ml",
     "concentracion": "Eau de Toilette",
     "categoria": "Hombre",
-    "precioReferencia": 17000,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/armaf/club-de-nuit-intense-edt-105-ml",
-    "fechaPrecio": "2026-09-09",
     "foto": "imagenes/perfumes/club-de-nuit-intense.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/hero-93.jpg",
-    "tendenciaLocal": true,
-    "descripcion": "Fragancia masculina destacada en el reporte de ventas de una perfumería local."
+    "descripcion": "Perfil cítrico y amaderado, pensado para quien busca una fragancia de presencia marcada."
   },
   {
     "id": "lattafa-yara-rosa",
@@ -70,14 +46,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
-    "precioReferencia": 12000,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/lattafa/yara-edp-100-ml",
-    "fechaPrecio": "2026-09-16",
     "foto": "imagenes/perfumes/yara-rose.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/hero-622.jpg",
-    "tendenciaLocal": true,
-    "descripcion": "Yara aparece entre las fragancias femeninas más buscadas en el reporte local consultado."
+    "descripcion": "Aroma dulce, floral y cremoso dentro de la colección Yara."
   },
   {
     "id": "lattafa-yara-tous",
@@ -86,14 +56,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
-    "precioReferencia": 14500,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://ahorraya.app/precios/lattafa/yara-tous-100-ml",
-    "fechaPrecio": "2026-10-17",
     "foto": "imagenes/perfumes/yara-tous.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/360.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Variante de Yara con presencia en varias perfumerías costarricenses. Precio observado en colones."
+    "descripcion": "Perfil frutal tropical con notas cremosas para disfrutar a cualquier hora."
   },
   {
     "id": "lattafa-yara-moi",
@@ -102,14 +66,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
-    "precioReferencia": 14000,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/lattafa/yara-moi-edp-100-ml",
-    "fechaPrecio": "2026-09-09",
     "foto": "imagenes/perfumes/yara-moi.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/359.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Variante de Yara registrada en tiendas costarricenses. Consultá la fuente para revisar su precio más reciente."
+    "descripcion": "Aroma dulce y floral con un fondo cálido y envolvente."
   },
   {
     "id": "lattafa-asad-elixir",
@@ -118,14 +76,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 15500,
-    "fuentePrecio": "Fragancias506 · catálogo costarricense",
-    "urlPrecio": "https://fragancias506.com/",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/asad-elixir.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/343.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Precio visto en el catálogo costarricense de Fragancias506 el 19 de octubre de 2026."
+    "descripcion": "Perfil ambarado y especiado con notas de madera y vainilla."
   },
   {
     "id": "lattafa-fakhar-black",
@@ -134,14 +86,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 13000,
-    "fuentePrecio": "Fragancias506 · catálogo costarricense",
-    "urlPrecio": "https://fragancias506.com/",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/fakhar-black.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/348.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Precio visto en el catálogo costarricense de Fragancias506 el 19 de octubre de 2026."
+    "descripcion": "Fragancia masculina de carácter fresco y amaderado."
   },
   {
     "id": "lattafa-honor-and-glory",
@@ -150,14 +96,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Unisex",
-    "precioReferencia": 16000,
-    "fuentePrecio": "AhorraYa · categoría de perfumes árabes",
-    "urlPrecio": "https://www.ahorraya.app/precios/categoria/perfumes-arabes",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/honor-and-glory.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/346.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Perfume árabe incluido en los precios rastreados por tiendas costarricenses."
+    "descripcion": "Aroma unisex dulce y especiado con un carácter cálido."
   },
   {
     "id": "rasasi-hawas-for-her",
@@ -166,14 +106,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Mujer",
-    "precioReferencia": 14500,
-    "fuentePrecio": "Fragancias506 · catálogo costarricense",
-    "urlPrecio": "https://fragancias506.com/",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/hawas-for-her.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/294.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Precio visto en el catálogo costarricense de Fragancias506 el 19 de octubre de 2026."
+    "descripcion": "Perfil floral y frutal con un carácter dulce y femenino."
   },
   {
     "id": "rasasi-hawas-tropical",
@@ -182,14 +116,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 19000,
-    "fuentePrecio": "Fragancias506 · catálogo costarricense",
-    "urlPrecio": "https://fragancias506.com/",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/hawas-tropical.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/301.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Precio visto en el catálogo costarricense de Fragancias506 el 19 de octubre de 2026."
+    "descripcion": "Fragancia fresca y tropical para quienes disfrutan los acordes frutales."
   },
   {
     "id": "afnan-9pm",
@@ -198,14 +126,8 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Parfum",
     "categoria": "Hombre",
-    "precioReferencia": 18000,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/afnan/9pm-edp-100-ml",
-    "fechaPrecio": "2026-09-23",
     "foto": "imagenes/perfumes/afnan-9pm.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/13.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Fragancia de Afnan seguida por varias tiendas costarricenses en el comparador consultado."
+    "descripcion": "Aroma dulce y especiado con matices frutales y cálidos."
   },
   {
     "id": "afnan-9pm-elixir",
@@ -214,14 +136,8 @@
     "tamano": "100 ml",
     "concentracion": "Parfum Intense",
     "categoria": "Unisex",
-    "precioReferencia": 22000,
-    "fuentePrecio": "AhorraYa · dato local observado",
-    "urlPrecio": "https://www.ahorraya.app/precios/afnan/9pm-elixir-100-ml",
-    "fechaPrecio": "2026-09-28",
     "foto": "imagenes/perfumes/afnan-9pm-elixir.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/12.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Precio mínimo local observado para 9 PM Elixir; puede cambiar entre comercios."
+    "descripcion": "Una interpretación más especiada y amaderada dentro de la línea 9 PM."
   },
   {
     "id": "carolina-herrera-212-vip-men",
@@ -230,13 +146,7 @@
     "tamano": "100 ml",
     "concentracion": "Eau de Toilette",
     "categoria": "Hombre",
-    "precioReferencia": 35500,
-    "fuentePrecio": "Fragancias506 · catálogo costarricense",
-    "urlPrecio": "https://fragancias506.com/",
-    "fechaPrecio": "2026-10-19",
     "foto": "imagenes/perfumes/212-vip-men.jpg",
-    "fuenteFoto": "https://fragancias506.com/img/148.jpg",
-    "tendenciaLocal": false,
-    "descripcion": "Precio visto en el catálogo costarricense de Fragancias506 el 19 de octubre de 2026."
+    "descripcion": "Fragancia masculina de carácter urbano, dulce y amaderado."
   }
 ]
