@@ -146,6 +146,7 @@ main { min-height: 60vh; }
 .section-heading p { max-width: 64ch; margin: 10px 0 0; color: var(--muted); }
 .section-kicker { margin: 0 0 8px; color: var(--wine); font-size: .7rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .catalog-controls { display: grid; grid-template-columns: minmax(230px, 1fr) auto auto; align-items: center; gap: 14px; margin-bottom: 18px; }
+.catalog-controls[hidden], .icon-action[hidden] { display: none !important; }
 .search-wrap { min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 0 13px; background: var(--surface); border: 1px solid var(--line); }
 .search-wrap svg { width: 19px; height: 19px; color: var(--muted); flex: 0 0 auto; }
 .search-wrap input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); }
@@ -179,8 +180,10 @@ main { min-height: 60vh; }
 .product-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: var(--muted); font-size: .73rem; }
 .product-brand { color: var(--wine); font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 .product-name-button { display: block; width: 100%; margin: 7px 0 4px; padding: 0; text-align: left; background: transparent; border: 0; font: 500 1.28rem/1.2 var(--font-display); cursor: pointer; }
+.product-name-static { margin: 7px 0 4px; font: 500 1.28rem/1.2 var(--font-display); }
 .product-name-button:hover { color: var(--wine); }
 .product-description { min-height: 48px; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.5; }
+.product-spec { margin: 10px 0 0; color: var(--muted); font-size: .78rem; }
 .card-actions { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 12px; }
 .add-button { min-height: 46px; width: 100%; padding: 10px 12px; background: var(--wine); color: #fff; border: 1px solid var(--wine); border-radius: 2px; font-weight: 700; cursor: pointer; }
 .add-button:hover { background: var(--wine-deep); }

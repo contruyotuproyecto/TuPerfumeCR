@@ -10,7 +10,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261019-2">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CR">
   <meta property="og:title" content="Perfumes en Costa Rica | Tu Perfume CR">
@@ -47,7 +47,7 @@
       <a href="guia.html">Cómo elegir</a>
     </nav>
     <div class="header-actions">
-      <button class="icon-action" id="favoritesToggle" type="button" aria-label="Mostrar favoritos" aria-pressed="false" title="Mostrar favoritos">
+      <button class="icon-action" id="favoritesToggle" type="button" aria-label="Mostrar favoritos" aria-pressed="false" title="Mostrar favoritos" hidden>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10.1-8.8 10.1S3.2 13.8 3.2 8.7A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.7Z"/></svg>
         <span class="action-label">Favoritos</span>
       </button>
@@ -89,7 +89,7 @@
           <p>Conocé fragancias árabes y de diseñador en el catálogo de Tu Perfume CR.</p>
       </div>
     </div>
-    <div class="catalog-controls">
+    <div class="catalog-controls" id="catalogControls" hidden>
       <label class="search-wrap" for="productSearch">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
         <input id="productSearch" type="search" autocomplete="off" placeholder="Buscar por perfume o marca">
@@ -107,9 +107,174 @@
         </select>
       </label>
     </div>
-    <p class="product-count" id="productCount" role="status" aria-live="polite" aria-atomic="true">Cargando fragancias…</p>
-    <div class="products-grid" id="productsGrid" aria-busy="true">
-      <div class="empty-state"><p>Cargando el catálogo…</p></div>
+    <p class="product-count" id="productCount" role="status" aria-live="polite" aria-atomic="true">15 fragancias</p>
+    <div class="products-grid" id="productsGrid" aria-busy="false">
+      <!-- El catálogo está disponible en el HTML inicial para carga rápida e indexación. -->
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/hawas-ice.jpg" alt="Perfume Hawas Ice de Rasasi" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Rasasi</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Hawas Ice</h3>
+          <p class="product-description">Perfil fresco, frutal y acuático con un fondo amaderado.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/odyssey-mandarin-sky.jpg" alt="Perfume Odyssey Mandarin Sky de Armaf" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Armaf</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Odyssey Mandarin Sky</h3>
+          <p class="product-description">Aroma cítrico y dulce para quien disfruta fragancias intensas con salida frutal.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/odyssey-aqua.jpg" alt="Perfume Odyssey Aqua de Armaf" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Armaf</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Odyssey Aqua</h3>
+          <p class="product-description">Aroma cítrico y aromático con un carácter fresco para el día.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/club-de-nuit-intense.jpg" alt="Perfume Club de Nuit Intense de Armaf" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Armaf</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Club de Nuit Intense</h3>
+          <p class="product-description">Perfil cítrico y amaderado, pensado para quien busca una fragancia de presencia marcada.</p>
+          <p class="product-spec">105 ml · Eau de Toilette</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/yara-rose.jpg" alt="Perfume Yara Rosa de Lattafa" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Lattafa</span><span>Mujer</span></div>
+          <h3 class="product-name-static">Yara Rosa</h3>
+          <p class="product-description">Aroma dulce, floral y cremoso dentro de la colección Yara.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/yara-tous.jpg" alt="Perfume Yara Tous de Lattafa" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Lattafa</span><span>Mujer</span></div>
+          <h3 class="product-name-static">Yara Tous</h3>
+          <p class="product-description">Perfil frutal tropical con notas cremosas para disfrutar a cualquier hora.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/yara-moi.jpg" alt="Perfume Yara Moi de Lattafa" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Lattafa</span><span>Mujer</span></div>
+          <h3 class="product-name-static">Yara Moi</h3>
+          <p class="product-description">Aroma dulce y floral con un fondo cálido y envolvente.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/asad-elixir.jpg" alt="Perfume Asad Elixir de Lattafa" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Lattafa</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Asad Elixir</h3>
+          <p class="product-description">Perfil ambarado y especiado con notas de madera y vainilla.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/fakhar-black.jpg" alt="Perfume Fakhar de Lattafa" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Lattafa</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Fakhar</h3>
+          <p class="product-description">Fragancia masculina de carácter fresco y amaderado.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/honor-and-glory.jpg" alt="Perfume Bade&#x27;e Al Oud Honor &amp; Glory de Lattafa" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Lattafa</span><span>Unisex</span></div>
+          <h3 class="product-name-static">Bade&#x27;e Al Oud Honor &amp; Glory</h3>
+          <p class="product-description">Aroma unisex dulce y especiado con un carácter cálido.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/hawas-for-her.jpg" alt="Perfume Hawas for Her de Rasasi" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Rasasi</span><span>Mujer</span></div>
+          <h3 class="product-name-static">Hawas for Her</h3>
+          <p class="product-description">Perfil floral y frutal con un carácter dulce y femenino.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/hawas-tropical.jpg" alt="Perfume Hawas Tropical de Rasasi" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Rasasi</span><span>Hombre</span></div>
+          <h3 class="product-name-static">Hawas Tropical</h3>
+          <p class="product-description">Fragancia fresca y tropical para quienes disfrutan los acordes frutales.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/afnan-9pm.jpg" alt="Perfume 9 PM de Afnan" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Afnan</span><span>Hombre</span></div>
+          <h3 class="product-name-static">9 PM</h3>
+          <p class="product-description">Aroma dulce y especiado con matices frutales y cálidos.</p>
+          <p class="product-spec">100 ml · Eau de Parfum</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/afnan-9pm-elixir.jpg" alt="Perfume 9 PM Elixir de Afnan" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Afnan</span><span>Unisex</span></div>
+          <h3 class="product-name-static">9 PM Elixir</h3>
+          <p class="product-description">Una interpretación más especiada y amaderada dentro de la línea 9 PM.</p>
+          <p class="product-spec">100 ml · Parfum Intense</p>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-visual">
+          <img class="product-image" src="imagenes/perfumes/212-vip-men.jpg" alt="Perfume 212 VIP Men de Carolina Herrera" width="680" height="714" loading="lazy" decoding="async">
+        </div>
+        <div class="product-body">
+          <div class="product-meta"><span class="product-brand">Carolina Herrera</span><span>Hombre</span></div>
+          <h3 class="product-name-static">212 VIP Men</h3>
+          <p class="product-description">Fragancia masculina de carácter urbano, dulce y amaderado.</p>
+          <p class="product-spec">100 ml · Eau de Toilette</p>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -193,7 +358,7 @@
   </div>
 </dialog>
 <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-<script src="app.js" defer></script>
+<script src="app.js?v=20261019-2" defer></script>
 </body>
 </html>
 

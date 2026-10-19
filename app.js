@@ -19,6 +19,7 @@
     search: document.getElementById('productSearch'),
     sort: document.getElementById('productSort'),
     filters: document.getElementById('categoryFilters'),
+    controls: document.getElementById('catalogControls'),
     favoritesToggle: document.getElementById('favoritesToggle'),
     productDialog: document.getElementById('productDialog'),
     dialogClose: document.getElementById('dialogClose'),
@@ -191,6 +192,11 @@
 
   function showLoadError() {
     elements.grid.setAttribute('aria-busy', 'false');
+    const fallbackCount = elements.grid.querySelectorAll('.product-card').length;
+    if (fallbackCount) {
+      elements.count.textContent = fallbackCount + (fallbackCount === 1 ? ' fragancia' : ' fragancias');
+      return;
+    }
     elements.count.textContent = 'No se pudo cargar el catálogo.';
     const message = makeElement('div', 'empty-state');
     message.append(makeElement('h3', '', 'El catálogo no está disponible ahora'));
@@ -203,7 +209,6 @@
   }
 
   async function loadProducts() {
-    elements.grid.setAttribute('aria-busy', 'true');
     try {
       const response = await fetch('productos.json', { cache: 'no-store' });
       if (!response.ok) throw new Error('Product data request failed');
@@ -217,6 +222,8 @@
       }));
       writeStorage(FAVORITES_KEY, Array.from(state.favorites));
       updateFavoritesToggle();
+      elements.controls.hidden = false;
+      elements.favoritesToggle.hidden = false;
       renderProducts();
     } catch (error) {
       showLoadError();
