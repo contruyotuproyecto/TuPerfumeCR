@@ -8,6 +8,16 @@ El catálogo inicial reúne 15 fragancias. Los precios son referencias observada
 
 Las fotos son imágenes de producto procedentes del catálogo público de Fragancias506.com. Revisá `FUENTES_DE_IMAGENES.md` y obtené autorización de reutilización antes de convertir el catálogo en una tienda comercial.
 
+## Blog
+
+La portada enlaza tres artículos informativos:
+
+- articulos/perfumes-para-el-calor.html: perfiles frescos para clima cálido.
+- articulos/perfumes-para-la-noche.html: opciones cálidas y especiadas para salidas nocturnas.
+- articulos/perfume-segun-la-ocasion.html: cómo elegir para el día, una salida o un regalo.
+
+Las fotos de los artículos provienen de Wikimedia Commons con créditos y licencias visibles. Sus fuentes están documentadas en FUENTES_DE_IMAGENES.md. Las 15 fotos del catálogo tienen una situación distinta: hay que obtener autorización de Fragancias506 o reemplazarlas por imágenes autorizadas antes de usarlas comercialmente.
+
 ## Archivos
 
 - `index.html`: catálogo y carrito de muestra.
