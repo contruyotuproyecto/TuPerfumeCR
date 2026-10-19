@@ -242,6 +242,8 @@ main { min-height: 60vh; }
 .footer-links { display: flex; align-items: start; justify-content: end; flex-wrap: wrap; gap: 10px 22px; }
 .footer-links a { color: #f2dfe5; font-size: .86rem; }
 .footer-bottom { margin-top: 28px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.18); color: #c9c0c5; font-size: .75rem; }
+.footer-credit { display: block; margin-top: 8px; }
+.footer-credit a { color: #f2dfe5; text-underline-offset: .18em; }
 
 .backdrop { position: fixed; z-index: 70; inset: 0; background: rgba(29, 24, 29, .55); opacity: 0; transition: opacity .2s ease; }
 .backdrop.visible { opacity: 1; }
