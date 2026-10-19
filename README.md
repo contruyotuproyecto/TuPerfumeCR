@@ -35,9 +35,9 @@ Actualizá `productos.json`. Para cada producto incluí el identificador, nombre
 
 ## Publicación
 
-El sitio está publicado con GitHub Pages en `http://tuperfumecr.labweb.top/`; el workflow despliega desde la rama `main`. El CNAME `tuperfumecr` está configurado en Spaceship para `contruyotuproyecto.github.io` y los resolvers públicos lo devuelven correctamente. A fecha 19 de octubre de 2026, GitHub Pages sigue mostrando `InvalidDNSError` y un error al emitir el certificado, por lo que HTTPS aún no está disponible ni debe activarse manualmente.
+El sitio está publicado con GitHub Pages en `https://tuperfumecr.labweb.top/`; el workflow despliega desde la rama `main`. El CNAME `tuperfumecr` está configurado en Spaceship para `contruyotuproyecto.github.io`, GitHub Pages aprobó la verificación DNS y HTTPS está activo. Las visitas por HTTP se redirigen a HTTPS.
 
-El sitemap `https://tuperfumecr.labweb.top/sitemap.xml` fue enviado a la propiedad de dominio `labweb.top` en Google Search Console y figura como aceptado, con cinco páginas descubiertas. Esto confirma la recepción del sitemap, no que Google ya haya indexado cada página. Revisar la emisión del certificado en la configuración de Pages y solicitar inspección de URL cuando HTTPS quede listo.
+El sitemap `https://tuperfumecr.labweb.top/sitemap.xml` fue enviado a la propiedad de dominio `labweb.top` en Google Search Console y figura como aceptado, con cinco páginas descubiertas. Se solicitaron rastreos prioritarios para la portada y los tres artículos; Search Console agotó su cuota diaria al intentar enviar la guía general. Estas solicitudes no garantizan la indexación. Revisar el estado en Search Console y volver a solicitar la guía cuando se restablezca la cuota.
 
 ## Marca y operación
 
