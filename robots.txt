@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://labweb.top/sitemap.xml
+Sitemap: https://therian.labweb.top/sitemap.xml
