@@ -318,11 +318,6 @@ main { min-height: 60vh; }
   .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
-  .header-inner { width: min(100% - 28px, 1220px); min-height: 70px; gap: 12px; }
-  .brand-name { font-size: 1.02rem; }
-  .brand-caption { font-size: .61rem; }
-  .brand-mark { width: 38px; height: 38px; }
-  .icon-action { padding-inline: 9px; }
   .container { width: min(100% - 28px, 1220px); }
   .hero { padding-top: 16px; }
   .hero-panel { grid-template-columns: 1fr; }
@@ -369,12 +364,6 @@ main { min-height: 60vh; }
   .cart-line img { width: 60px; height: 72px; }
 }
 @media (max-width: 380px) {
-  .header-inner { width: calc(100% - 20px); }
-  .brand-lockup { gap: 8px; }
-  .brand-name { font-size: .96rem; }
-  .header-actions { gap: 5px; }
-  .icon-action { min-width: 42px; padding: 7px; }
-  .action-label, .header-catalog-link { display: none; }
   .container { width: calc(100% - 20px); }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -383,12 +372,20 @@ main { min-height: 60vh; }
 }
 
 @media (max-width: 760px) {
-  .header-inner { flex-wrap: wrap; padding-top: 9px; }
-  .brand-lockup { order: 0; }
-  .header-actions { order: 1; margin-left: auto; }
-  .main-nav { order: 2; display: flex; width: 100%; flex-wrap: wrap; justify-content: space-between; gap: 6px 14px; padding: 0 0 9px; }
+  .header-inner {
+    width: min(100% - 28px, 1220px); display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center;
+    min-height: 0; gap: 10px; padding: 11px 0 0;
+  }
+  .brand-lockup { grid-row: 1; justify-content: center; gap: 8px; }
+  .brand-lockup > span:last-child { text-align: center; }
+  .brand-name { font-size: 1.02rem; }
+  .brand-caption { font-size: .61rem; }
+  .brand-mark { width: 38px; height: 38px; }
+  .header-actions { grid-row: 2; justify-content: center; gap: 10px; margin-left: 0; }
+  .icon-action { padding-inline: 12px; }
+  .main-nav { grid-row: 3; display: flex; width: 100%; flex-wrap: wrap; justify-content: center; gap: 6px clamp(18px, 5vw, 28px); padding: 0 0 10px; }
   .main-nav a { font-size: .82rem; white-space: nowrap; }
-  .action-label { display: none; }
+  .action-label { display: inline; }
   .blog-card-copy > p:not(.article-meta) { font-size: 1rem; }
   .blog-card-image { height: 250px; }
   .article-hero-photo img { max-height: min(68vh, 430px); }
