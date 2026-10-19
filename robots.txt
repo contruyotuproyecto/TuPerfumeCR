@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://therian.labweb.top/sitemap.xml
+Sitemap: https://tuperfumecr.labweb.top/sitemap.xml

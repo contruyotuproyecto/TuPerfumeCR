@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#312731"/>
+  <path d="M0 510h1200v120H0z" fill="#512034"/>
+  <circle cx="922" cy="302" r="198" fill="#eadde1"/>
+  <path d="M858 154h128m-115 0v74l-62 45v207c0 15 12 27 27 27h172c15 0 27-12 27-27V273l-62-45v-74" fill="none" stroke="#70263f" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+  <path d="M809 304h226m-160 73h94" fill="none" stroke="#9a7445" stroke-linecap="round" stroke-width="11"/>
+  <text x="88" y="152" fill="#d7bda5" font-family="Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="6">FRAGANCIAS · COSTA RICA</text>
+  <text x="82" y="291" fill="#ffffff" font-family="Georgia,serif" font-size="78">Tu Perfume CR</text>
+  <text x="88" y="371" fill="#e8c9d3" font-family="Arial,sans-serif" font-size="34">Aromas que van contigo.</text>
+  <text x="88" y="558" fill="#f8f3f2" font-family="Arial,sans-serif" font-size="23">15 referencias · precios consultados en Costa Rica</text>
+</svg>

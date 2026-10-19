@@ -1,1381 +1,197 @@
-
-<!DOCTYPE html>
-<html lang="es">
+<!doctype html>
+<html lang="es-CR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="theme-color" content="#f7f4fa"/>
-
-<!-- SEO + Compartir -->
-<meta name="description" content="Máscaras Therian artesanales hechas a mano en Costa Rica. Explorá diseños de lobo, zorro, dragón, gato, ciervo y búho. Sitio demo; compras no habilitadas."/>
-<link rel="canonical" href="https://therian.labweb.top/"/>
-<meta property="og:title" content="Therian Masks CR | Máscaras Artesanales"/>
-<meta property="og:description" content="Máscaras Therian artesanales hechas a mano en Costa Rica. Explorá la colección en este sitio demo; compras no habilitadas."/>
-<meta property="og:url" content="https://therian.labweb.top/"/>
-<meta property="og:image" content="https://therian.labweb.top/logo.png"/>
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="logo.png"/>
-<link rel="apple-touch-icon" href="logo.png"/>
-  
-  <title>Therian Masks CR | Máscaras artesanales en Costa Rica</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      color-scheme: light;
-      --bg:           #f7f4fa;
-      --surface:      #ffffff;
-      --border:       #e6deef;
-      --purple:       #7140bd;
-      --purple2:      #4f267e;
-      --purple-light: #ebe2fa;
-      --purple-xlight:#f5f1fb;
-      --gold:         #8b5a12;
-      --text:         #241d2b;
-      --muted:        #5f5965;
-      --muted2:       #74707a;
-      --green:        #08734c;
-      --red:          #dc2626;
-      --focus:        #8b5cf6;
-      --radius:       16px;
-      --shadow:       0 8px 24px rgba(47,29,65,0.08);
-      --shadow-hover: 0 16px 36px rgba(47,29,65,0.16);
-    }
-
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { background:var(--bg); color:var(--text); font-family:'Nunito',sans-serif; line-height:1.55; }
-    button, input { font:inherit; }
-    button { touch-action:manipulation; -webkit-tap-highlight-color:rgba(113,64,189,0.18); }
-    a { -webkit-tap-highlight-color:rgba(113,64,189,0.18); }
-    :focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
-    .skip-link {
-      position:fixed; left:1rem; top:1rem; z-index:10000;
-      padding:0.7rem 1rem; background:#fff; color:var(--purple2);
-      border:2px solid var(--purple2); border-radius:8px; font-weight:800;
-      transform:translateY(-180%); transition:transform 0.18s ease-out;
-    }
-    .skip-link:focus { transform:translateY(0); }
-
-    /* ── TOP BAR ── */
-    .topbar {
-      background: var(--purple2);
-      color: #f1e9fb;
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 0.4rem 1rem;
-      letter-spacing: 0.5px;
-    }
-    .topbar strong { color: #fff; }
-
-    /* ── HEADER ── */
-    header {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-    .header-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 1.5rem;
-      gap: 1rem;
-    }
-
-    /* Logo — siempre a la izquierda */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-    }
-    .logo-text { display: flex; flex-direction: column; gap: 0.1rem; }
-    .logo-name {
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      color: var(--purple2);
-      line-height: 1;
-      white-space: nowrap;
-    }
-    .logo-sub {
-      font-size: 0.65rem;
-      color: var(--muted);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    /* Nav central — links */
-    .header-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      flex: 1;
-      justify-content: center;
-    }
-    .nav-link {
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      transition: color 0.2s, background-color 0.2s;
-      white-space: nowrap;
-    }
-    .nav-link:hover { color: var(--purple); background: var(--purple-xlight); }
-    .nav-link.active { color: var(--purple2); }
-
-    /* Carrito — siempre a la derecha */
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-shrink: 0;
-    }
-    .cart-btn {
-      background: var(--purple);
-      border: none;
-      border-radius: 50px;
-      padding: 0.5rem 1.1rem;
-      color: #fff;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      transition: background-color 0.25s, transform 0.25s;
-      white-space: nowrap;
-    }
-    .cart-btn:hover { background: var(--purple2); transform: translateY(-1px); }
-    .cart-count {
-      background: var(--gold);
-      color: #fff;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.68rem;
-      font-weight: 800;
-    }
-
-    /* ── MOBILE NAV BAR — solo en móvil, debajo del header ── */
-    .mobile-nav-bar {
-      display: none; /* oculto en desktop */
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background: radial-gradient(ellipse at 78% 50%, rgba(126,85,190,0.48), transparent 36%), #28173f;
-      padding: clamp(2.25rem, 4.5vw, 4rem) 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .hero-content {
-      position: relative; z-index:1; max-width:1180px; margin:0 auto;
-      display:grid; grid-template-columns:minmax(0,1.1fr) minmax(280px,0.9fr);
-      align-items:center; gap:clamp(2rem,7vw,6rem);
-    }
-    .hero-copy { max-width:620px; }
-    .hero-kicker {
-      color:#d6c3f1; font-size:0.82rem; font-weight:800;
-      letter-spacing:0.06em; margin-bottom:0.65rem;
-    }
-    .hero h1 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.2rem, 4.5vw, 3.6rem);
-      color: #fff;
-      margin-bottom: 0.8rem;
-      line-height: 1.2;
-      text-wrap:balance;
-    }
-    .hero h1 span { color: #d4b8ff; }
-    .hero-copy > p:not(.hero-kicker) { color:#eee6f7; font-size:1.05rem; margin-bottom:1.45rem; line-height:1.65; max-width:54ch; }
-    .hero-actions { display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap; }
-    .hero-cta {
-      min-height:48px; display:inline-flex; align-items:center; justify-content:center;
-      padding:0.72rem 1.15rem; border-radius:9px; background:#fff; color:var(--purple2);
-      font-weight:800; text-decoration:none; transition:background 0.2s, transform 0.2s;
-    }
-    .hero-cta:hover { background:#f1e8ff; transform:translateY(-1px); }
-    .hero-story-link { color:#f1e9fb; font-weight:700; text-underline-offset:4px; }
-    .hero-feature {
-      position:relative; width:min(100%,390px); aspect-ratio:0.92; justify-self:center;
-      overflow:hidden; margin:0; border:1px solid rgba(255,255,255,0.3);
-      border-radius:48% 48% 22px 22px; background:#e8e0ef;
-      box-shadow:0 22px 55px rgba(10,4,20,0.3);
-    }
-    .hero-feature img { width:100%; height:100%; object-fit:cover; display:block; }
-    .hero-feature figcaption {
-      position:absolute; inset:auto 0 0; padding:2.4rem 1rem 1rem;
-      display:flex; flex-direction:column; gap:0.15rem; color:#fff;
-      background:linear-gradient(transparent,rgba(24,13,36,0.88));
-    }
-    .hero-feature figcaption span { font-size:0.76rem; color:#e7d8f8; }
-    .hero-feature figcaption strong { font-size:1rem; }
-
-    /* ── PAYMENT BAR ── */
-    .payment-bar { background:#fff; border-bottom:1px solid var(--border); padding:1.15rem 1.5rem; }
-    .payment-bar-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display:grid; grid-template-columns:auto 1fr; align-items:start; gap:0.5rem 1.5rem;
-      color:var(--text);
-    }
-    .process-title { color:var(--purple2); font-family:'Cinzel',serif; font-size:1rem; white-space:nowrap; padding-top:0.15rem; }
-    .process-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.75rem 1.25rem; list-style:none; }
-    .process-steps li { position:relative; padding-left:1.8rem; color:var(--muted); font-size:0.87rem; line-height:1.4; }
-    .process-step-number {
-      position:absolute; left:0; top:0.03rem; width:1.25rem; height:1.25rem;
-      display:grid; place-items:center; border-radius:50%; background:var(--purple-light);
-      color:var(--purple2); font-size:0.72rem; font-weight:800;
-    }
-    .payment-details { grid-column:2; color:var(--muted); font-size:0.82rem; }
-    .payment-details strong { color:var(--purple2); }
-
-    /* ── SHOP LAYOUT ── */
-    .shop-layout {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: clamp(2rem,4vw,3.75rem) 1.5rem;
-      scroll-margin-top:6rem;
-    }
-    .shop-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-    .section-kicker { color:var(--purple); font-size:0.78rem; font-weight:800; margin-bottom:0.2rem; }
-    .shop-title { font-family:'Cinzel',serif; font-size:clamp(1.6rem,3vw,2rem); color:var(--purple2); line-height:1.25; }
-    .product-count { color:var(--muted); font-size:0.9rem; margin-top:0.25rem; }
-
-    /* ── FILTER BAR ── */
-    .filter-bar {
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      flex-wrap: wrap;
-      margin:1.25rem 0 1.5rem;
-    }
-    .filter-label {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      margin-right: 0.3rem;
-      white-space: nowrap;
-    }
-    .cat-btn {
-      background: var(--purple-xlight);
-      border: 1.5px solid var(--border);
-      border-radius: 50px;
-      min-height:44px; padding:0.45rem 0.85rem;
-      font-family: 'Nunito', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--purple2);
-      cursor: pointer;
-      transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-      white-space: nowrap;
-    }
-    .cat-btn:hover, .cat-btn.active {
-      background: var(--purple);
-      color: #fff;
-      border-color: var(--purple);
-    }
-
-    /* ── PRODUCT GRID ── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    /* ── PRODUCT CARD ── */
-    .product-card {
-      background: var(--surface);
-      border-radius:18px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
-      cursor: pointer;
-      position: relative;
-    }
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-      border-color: #c4b5fd;
-    }
-    .card-img-wrap {
-      position: relative;
-      aspect-ratio: 1;
-      overflow: hidden;
-      background: var(--purple-xlight);
-    }
-    .card-image-button { position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; background:none; cursor:pointer; }
-    .card-image-button:focus-visible { z-index:3; outline-offset:-5px; }
-    .card-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s;
-    }
-    .product-card:hover .card-img-wrap img { transform: scale(1.06); }
-    .card-img-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      color:var(--purple2); font-size:0.9rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase;
-      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-    }
-    .badge-dest {
-      position: absolute; top: 10px; left: 10px;
-      background: var(--purple); color: #fff;
-      border-radius: 50px; padding: 0.2rem 0.65rem;
-      font-size: 0.7rem; font-weight: 800; z-index:1;
-    }
-    .badge-agotado {
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.55);
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; pointer-events:none;
-    }
-    .wish-btn {
-      position: absolute; top: 10px; right: 10px;
-      background: rgba(255,255,255,0.92); border: none; border-radius: 50%;
-      width:44px; height:44px; z-index:2;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 1rem;
-      transition: transform 0.2s, color 0.2s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .wish-btn:hover { transform:scale(1.05); }
-    .wish-btn.active { color:#b42342; }
-    .wish-btn.active svg { fill:currentColor; }
-    .card-body { padding:1rem; }
-    .card-cat { font-size: 0.72rem; color: var(--purple); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.25rem; }
-    .card-name { display:block; width:100%; border:0; background:none; padding:0; text-align:left; font-weight:700; font-size:0.98rem; color:var(--text); margin-bottom:0.3rem; line-height:1.35; cursor:pointer; }
-    .card-name:hover { color:var(--purple2); }
-    .card-desc {
-      font-size:0.88rem; color:var(--muted); line-height:1.5; margin-bottom:0.8rem;
-      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      flex-wrap: nowrap;
-    }
-    .card-footer-price { flex-shrink: 0; }
-    .card-price { font-size: 1.05rem; font-weight: 800; color: var(--text); white-space: nowrap; font-variant-numeric:tabular-nums; }
-    .card-price-sub { font-size: 0.7rem; color: var(--muted); font-weight: 400; }
-    .card-stock-low { font-size: 0.72rem; color: var(--red); font-weight: 700; margin-top: 0.2rem; }
-    .add-to-cart {
-      background: var(--purple); border: none; border-radius: 8px;
-      min-height:44px; padding:0.55rem 0.65rem; color:#fff;
-      font-family:'Nunito',sans-serif; font-weight:800; font-size:0.78rem;
-      cursor: pointer; transition: background-color 0.2s, transform 0.2s;
-      white-space: nowrap; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      min-width:72px;
-    }
-    .add-to-cart:hover { background: var(--purple2); transform: translateY(-1px); }
-    .add-to-cart:disabled { background:#e6e1eb; color:#5f5965; cursor:not-allowed; transform:none; }
-
-    /* ── CART SIDEBAR ── */
-    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-    .overlay.open { opacity: 1; pointer-events: all; }
-    .cart-sidebar {
-      position: fixed; right: 0; top: 0; bottom: 0;
-      width: min(430px, 100vw); background: #fff;
-      border-left: 1px solid var(--border); z-index: 300;
-      display: flex; flex-direction: column;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
-      box-shadow: -8px 0 32px rgba(0,0,0,0.12);
-      overscroll-behavior: contain;
-    }
-    .cart-sidebar.open { transform: translateX(0); }
-    .cart-head {
-      padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-      background: var(--purple-xlight);
-    }
-    .cart-head h2 { font-family:'Cinzel',serif; font-size:1.1rem; color:var(--purple2); }
-    .close-x { min-width:44px; min-height:44px; background:none; border:0; border-radius:8px; font-size:1.4rem; cursor:pointer; color:var(--muted); transition:color 0.2s; }
-    .close-x:hover { color: var(--text); }
-    .cart-body { flex: 1; overflow-y: auto; padding: 1rem; overscroll-behavior:contain; }
-    .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); }
-    .cart-empty-hint { margin-top:0.45rem; color:var(--muted2); font-size:0.88rem; }
-    .cart-item {
-      display: flex; gap: 0.9rem; padding: 0.9rem;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      margin-bottom: 0.75rem; background: #fff;
-    }
-    .ci-img { width: 62px; height: 62px; border-radius: 8px; overflow: hidden; background: var(--purple-xlight); flex-shrink: 0; }
-    .ci-img img { width: 100%; height: 100%; object-fit: cover; }
-    .ci-img-ph { width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:0.2rem; color:var(--purple2); font-size:0.7rem; font-weight:800; text-align:center; text-transform:uppercase; }
-    .ci-info { flex: 1; min-width:0; }
-    .ci-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 0.2rem; overflow-wrap:anywhere; }
-    .ci-price { color: var(--purple); font-size: 0.82rem; font-weight: 600; font-variant-numeric:tabular-nums; }
-    .qty-row { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem; }
-    .qbtn {
-      width:44px; height:44px; border:1px solid var(--border); border-radius:8px;
-      background: #fff; cursor: pointer; font-size: 1rem; transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .qbtn:hover { background: var(--purple); color: #fff; border-color: var(--purple); }
-    .qbtn:disabled { color:var(--muted2); background:var(--bg); cursor:not-allowed; }
-    .qnum { font-weight: 700; min-width: 22px; text-align: center; font-size: 0.9rem; font-variant-numeric:tabular-nums; }
-    .ci-del { width:44px; height:44px; background:none; border:0; border-radius:8px; cursor:pointer; color:var(--muted); font-size:1.1rem; transition:color 0.2s; align-self:flex-start; }
-    .ci-del:hover { color: var(--red); }
-    .cart-foot { padding:1rem 1.25rem; border-top:1px solid var(--border); max-height:48dvh; overflow-y:auto; overscroll-behavior:contain; }
-    .total-row { display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
-    .total-amount { color: var(--purple2); font-size: 1.3rem; font-variant-numeric:tabular-nums; }
-    .envio-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
-    .pay-notice {
-      background: #fef9ec; border: 1px solid #fde68a; border-radius: 8px;
-      padding:0.7rem 0.9rem; font-size:0.82rem; color:#60420e; margin-bottom:0.8rem; line-height:1.5;
-    }
-    .pay-notice strong { color:#4b3410; display:block; margin-bottom:0.15rem; }
-    .wa-btn {
-      width:100%; min-height:48px; background:#08734c;
-      border:0; border-radius:10px; padding:0.85rem; color:#fff;
-      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
-      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-      transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s; margin-top: 0.5rem;
-    }
-    .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
-    .wa-btn:disabled { background:#d8dedb; color:#3d4a42; cursor:not-allowed; transform:none; box-shadow:none; }
-    .demo-notice-dialog {
-      width:min(32rem, calc(100% - 2rem)); max-height:min(90vh, 40rem); margin:auto;
-      padding:0; border:1px solid var(--border); border-radius:16px; color:var(--text);
-      background:#fff; box-shadow:0 24px 72px rgba(24,17,38,0.28);
-    }
-    .demo-notice-dialog::backdrop { background:rgba(24,17,38,0.58); }
-    .demo-notice-content { padding:clamp(1.25rem, 5vw, 2rem); }
-    .demo-notice-kicker { margin:0 0 0.45rem; color:var(--purple2); font-size:0.78rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; }
-    .demo-notice-content h2 { margin:0 0 0.75rem; font-size:clamp(1.2rem, 4vw, 1.55rem); line-height:1.25; }
-    .demo-notice-content p:not(.demo-notice-kicker) { margin:0; line-height:1.6; color:var(--muted); }
-    .demo-notice-close { min-height:48px; width:100%; margin-top:1.25rem; border:0; border-radius:10px; background:var(--purple); color:#fff; font:800 1rem 'Nunito',sans-serif; cursor:pointer; }
-    .demo-notice-close:hover { background:var(--purple2); }
-    .demo-notice-close:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
-
-    /* ── POP-OUT NOTIFICACIÓN ── */
-    .popout {
-      position: fixed;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%) translateY(120px);
-      z-index: 9999;
-      transition: transform 0.4s cubic-bezier(.34,1.56,.64,1), opacity 0.3s;
-      opacity: 0;
-      pointer-events: none;
-      width: min(340px, calc(100vw - 2rem));
-    }
-    .popout.show {
-      transform: translateX(-50%) translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-    .popout-inner {
-      background: #fff;
-      border: 1.5px solid var(--border);
-      border-radius: 16px;
-      padding: 0.9rem 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15), 0 2px 8px rgba(124,58,237,0.12);
-    }
-    .popout-icon {
-      width: 40px; height: 40px;
-      background: linear-gradient(135deg, #7c3aed, #5b21b6);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .popout-text { flex: 1; min-width: 0; }
-    .popout-title {
-      font-weight: 800;
-      font-size: 0.82rem;
-      color: var(--purple2);
-      margin-bottom: 0.1rem;
-    }
-    .popout-name {
-      font-size: 0.78rem;
-      color: var(--muted);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .popout-check {
-      width: 28px; height: 28px;
-      background: #d1fae5;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-    /* toast simple para mensajes de error/warning */
-    .toast {
-      position: fixed; bottom: 1.5rem; left: 50%;
-      transform: translateX(-50%) translateY(80px);
-      background: var(--purple2); color: #fff; border-radius: 50px;
-      padding: 0.65rem 1.4rem; font-weight: 700; font-size: 0.9rem;
-      z-index: 9998; transition: transform 0.35s cubic-bezier(.4,0,.2,1);
-      width:max-content; max-width:calc(100vw - 2rem); text-align:center;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      opacity: 0; pointer-events: none;
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-    /* ── MODAL ── */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.72);
-      z-index: 400; opacity: 0; pointer-events: none;
-      transition: opacity 0.3s;
-      display: flex; align-items: center; justify-content: center; padding: 1rem;
-      overscroll-behavior: contain;
-    }
-    .modal-overlay.open { opacity: 1; pointer-events: all; }
-    .modal {
-      background:#fff; border-radius:18px; overflow:hidden;
-      max-width:820px; width:100%; max-height:90vh; max-height:90dvh;
-      display: flex; flex-direction: row; position: relative;
-      transform: scale(0.92) translateY(24px);
-      transition: transform 0.32s cubic-bezier(.4,0,.2,1);
-      box-shadow: 0 28px 70px rgba(0,0,0,0.28);
-    }
-    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
-    .modal-img {
-      width: 48%; flex-shrink: 0; overflow: hidden;
-      background: var(--purple-xlight);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .modal-img img { width: 100%; height: 100%; object-fit: cover; }
-    .modal-img-ph { color:var(--purple2); font-size:1rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; }
-    .modal-info {
-      flex: 1; padding: 2rem 1.8rem; overflow-y: auto; overscroll-behavior:contain;
-      display: flex; flex-direction: column; gap: 0.9rem;
-    }
-    .modal-cat { font-size: 0.72rem; font-weight: 800; color: var(--purple); text-transform: uppercase; letter-spacing: 1.5px; }
-    .modal-name { font-family: 'Cinzel', serif; font-size: 1.45rem; color: var(--text); line-height: 1.3; text-wrap:balance; }
-    .modal-price-wrap { display: flex; align-items: baseline; gap: 0.4rem; }
-    .modal-price { font-size: 1.9rem; font-weight: 800; color: var(--purple2); font-variant-numeric:tabular-nums; }
-    .modal-price-label { font-size: 0.82rem; color: var(--muted); }
-    .modal-divider { border: none; border-top: 1px solid var(--border); }
-    .modal-desc { color: var(--muted); line-height: 1.75; font-size: 0.93rem; }
-    .modal-stock-info { font-size: 0.82rem; font-weight: 700; }
-    .modal-stock-info.ok  { color: var(--green); }
-    .modal-stock-info.low { color: var(--gold); }
-    .modal-stock-info.out { color: var(--red); }
-    .modal-add {
-      background: linear-gradient(135deg, var(--purple), var(--purple2));
-      border: none; border-radius: 10px; padding: 0.9rem 1.5rem; color: #fff;
-      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 800;
-      cursor: pointer; transition: background-color 0.25s, transform 0.25s, box-shadow 0.25s; margin-top: auto;
-      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-    }
-    .modal-add:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.35); }
-    .modal-add:disabled { background:#e6e1eb; color:#5f5965; cursor:not-allowed; transform:none; box-shadow:none; }
-    .modal-close {
-      position: absolute; top: 14px; right: 14px;
-      background: rgba(0,0,0,0.07); border: none; border-radius: 50%;
-      width:44px; height:44px; font-size:1.1rem; cursor:pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s; z-index: 10; color: var(--text);
-    }
-    .modal-close:hover { background: rgba(0,0,0,0.15); }
-
-    /* ── EMPTY ── */
-    .empty-store { text-align: center; padding: 4rem 1rem; color: var(--muted); }
-    .empty-store .ei { font-size: 4rem; margin-bottom: 1rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #fff; border-top: 1px solid var(--border);
-      text-align: center; padding: 2rem 1.5rem; color: var(--muted); font-size: 0.85rem;
-    }
-    footer .ft-logo { font-family: 'Cinzel', serif; color: var(--purple2); font-size: 1rem; margin-bottom: 0.3rem; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      header {
-        position: fixed;
-        top: 0; left: 0; right: 0; width: 100%;
-      }
-      /* Compensar header fijo (≈62px) + barra de nav móvil (≈38px) */
-      body { padding-top: 100px; }
-
-      .header-inner { padding: 0.4rem 0.9rem; gap: 0.5rem; }
-      .header-nav { display: none; }
-      .logo { min-width: 0; }
-      .logo-img { width: 46px; height: 46px; }
-      .logo-name { font-size: 0.82rem; }
-      .logo-sub { display: none; }
-
-      /* Carrito: ícono visible y bien proporcionado en móvil */
-      .cart-btn .cart-label { display: none; }
-      .cart-btn {
-        padding: 0.6rem 0.75rem;
-        border-radius: 14px;
-        width: auto;
-        height: auto;
-        min-width: 44px;
-        min-height: 44px;
-        justify-content: center;
-        font-size: 1.1rem;
-      }
-
-      /* Barra de nav móvil — aparece pegada debajo del header fijo */
-      .mobile-nav-bar {
-        display: flex;
-        position: fixed;
-        top: 62px; /* justo debajo del header */
-        left: 0; right: 0;
-        z-index: 99;
-        background: var(--purple-xlight);
-        border-bottom: 1px solid var(--border);
-        padding: 0 1rem;
-        gap: 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-      }
-      .mobile-nav-bar::-webkit-scrollbar { display: none; }
-
-      .mobile-nav-link {
-        display: flex;
-        align-items: center;
-        min-height:44px;
-        gap: 0.3rem;
-        padding: 0.55rem 1rem;
-        font-family: 'Nunito', sans-serif;
-        font-size: 0.82rem;
-        font-weight: 700;
-        color: var(--muted);
-        text-decoration: none;
-        white-space: nowrap;
-        border-bottom: 2px solid transparent;
-        transition: color 0.2s, background-color 0.2s, border-color 0.2s;
-        flex-shrink: 0;
-      }
-      .mobile-nav-link:hover,
-      .mobile-nav-link.active {
-        color: var(--purple2);
-        border-bottom-color: var(--purple);
-      }
-    }
-    @media (max-width: 600px) {
-      .hero { padding:1.75rem 1rem; }
-      .hero-content { grid-template-columns:minmax(0,1fr) minmax(118px,0.62fr); gap:0.9rem; }
-      .hero-kicker { font-size:0.72rem; }
-      .hero h1 { font-size:clamp(1.55rem,7vw,2.15rem); }
-      .hero-copy > p:not(.hero-kicker) { font-size:0.92rem; line-height:1.5; margin-bottom:1rem; }
-      .hero-actions { align-items:flex-start; gap:0.65rem; }
-      .hero-cta { min-height:44px; padding:0.6rem 0.8rem; font-size:0.88rem; }
-      .hero-story-link { font-size:0.82rem; }
-      .hero-feature { aspect-ratio:0.72; border-radius:48% 48% 16px 16px; }
-      .hero-feature figcaption { padding:2rem 0.65rem 0.65rem; }
-      .hero-feature figcaption span { font-size:0.68rem; }
-      .hero-feature figcaption strong { font-size:0.8rem; }
-      .payment-bar { padding:0.9rem 1rem; }
-      .payment-bar-inner { grid-template-columns:1fr; gap:0.55rem; }
-      .process-title { white-space:normal; }
-      .process-steps { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.6rem 0.8rem; }
-      .process-steps li { font-size:0.8rem; }
-      .payment-details { grid-column:1; font-size:0.78rem; }
-      .shop-layout { padding:2rem 1rem; }
-      .products-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.85rem; }
-      .card-body { padding:0.7rem; }
-      .card-name { font-size:0.9rem; }
-      .card-desc { font-size:0.82rem; }
-      .card-price { font-size:0.98rem; }
-      .card-footer { flex-wrap:wrap; }
-      .add-to-cart { flex:1; }
-      .modal { flex-direction: column; max-height: 95vh; }
-      .modal-img { width: 100%; height: 220px; flex-shrink: 0; }
-      .modal-info { padding: 1.2rem; }
-      .modal-name { font-size: 1.15rem; }
-      .cart-foot { max-height:58dvh; }
-    }
-    @media (max-width:380px) {
-      .hero-content { grid-template-columns:minmax(0,1fr) 98px; gap:0.65rem; }
-      .hero h1 { font-size:1.5rem; }
-      .hero-story-link { font-size:0.78rem; }
-      .products-grid { grid-template-columns:1fr; }
-    }
-    @media (prefers-reduced-motion:reduce) {
-      html { scroll-behavior:auto; }
-      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#312731">
+  <meta name="description" content="Explorá perfumes árabes y clásicos con referencias de precio consultadas en Costa Rica. Catálogo demostrativo de 15 fragancias para mujer, hombre y uso unisex.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://tuperfumecr.labweb.top/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CR">
+  <meta property="og:title" content="Tu Perfume CR | Fragancias en Costa Rica">
+  <meta property="og:description" content="Catálogo demostrativo con 15 perfumes de tendencia y precios de referencia consultados en Costa Rica.">
+  <meta property="og:url" content="https://tuperfumecr.labweb.top/">
+  <meta property="og:image" content="https://tuperfumecr.labweb.top/imagenes/perfumes/yara-rose.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Tu Perfume CR | Perfumes de tendencia en Costa Rica</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tu Perfume CR",
+    "url": "https://tuperfumecr.labweb.top/",
+    "inLanguage": "es-CR",
+    "description": "Catálogo informativo de fragancias y precios de referencia consultados en Costa Rica."
+  }
+  </script>
 </head>
 <body>
-
-<a class="skip-link" href="#mainContent">Ir al contenido principal</a>
-
-<div class="topbar">
-  <strong>Sitio de demostración</strong> &nbsp;·&nbsp; Las compras y los pedidos por WhatsApp no están habilitados
-</div>
-
-<header>
+<a class="skip-link" href="#mainContent">Saltar al contenido principal</a>
+<div class="topbar">Catálogo de referencia · Los precios y la disponibilidad se confirman con cada comercio</div>
+<header class="site-header">
   <div class="header-inner">
-    <!-- LOGO — izquierda -->
-    <a class="logo" href="index.html">
-      <img class="logo-img" src="logo-small.png" alt="" width="60" height="60" fetchpriority="high">
-      <div class="logo-text">
-        <div class="logo-name">Therian Masks CR</div>
-        <div class="logo-sub">Máscaras · Costa Rica</div>
-      </div>
+    <a class="brand-lockup" href="index.html" aria-label="Tu Perfume CR, inicio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6M10 4v3l-3 2v10.5c0 .8.7 1.5 1.5 1.5h7c.8 0 1.5-.7 1.5-1.5V9l-3-2V4"/><path d="M7 11h10M10 15h4"/></svg>
+      </span>
+      <span><span class="brand-name">Tu Perfume CR</span><span class="brand-caption">Fragancias · Costa Rica</span></span>
     </a>
-
-    <!-- NAV CENTRAL -->
-    <nav class="header-nav" aria-label="Navegación principal">
-      <a class="nav-link active" href="index.html" aria-current="page">Tienda</a>
-      <a class="nav-link" href="historia.html">¿Qué es un Therian?</a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="#catalogo" aria-current="page">Fragancias</a>
+      <a href="guia.html">Cómo elegir</a>
+      <a href="#fuentes">Fuentes del estudio</a>
     </nav>
-
-    <!-- CARRITO — derecha -->
     <div class="header-actions">
-      <button class="cart-btn" type="button" onclick="toggleCart()" aria-label="Abrir carrito; 0 productos" aria-controls="cartSidebar" aria-expanded="false">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="cart-label">Carrito</span>
-        <span class="cart-count" id="cartCount" aria-hidden="true">0</span>
+      <button class="icon-action" id="favoritesToggle" type="button" aria-label="Mostrar favoritos" aria-pressed="false" title="Mostrar favoritos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 8.7c0 5.1-8.8 10.1-8.8 10.1S3.2 13.8 3.2 8.7A4.8 4.8 0 0 1 12 6a4.8 4.8 0 0 1 8.8 2.7Z"/></svg>
+        <span class="cart-label">Favoritos</span>
+      </button>
+      <button class="cart-action" id="cartToggle" type="button" aria-label="Abrir carrito de muestra; 0 productos" aria-controls="cartDrawer" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2 3h2l2.2 11.1a2 2 0 0 0 2 1.6h9.3a2 2 0 0 0 2-1.6L21 8H5"/></svg>
+        <span class="cart-label">Mi lista</span><span class="cart-count" id="cartCount" aria-hidden="true">0</span>
       </button>
     </div>
   </div>
 </header>
 
-<!-- BARRA DE NAV MÓVIL — solo visible en móvil, debajo del header fijo -->
-<nav class="mobile-nav-bar" aria-label="Navegación principal">
-  <a class="mobile-nav-link active" href="index.html" aria-current="page">Tienda</a>
-  <a class="mobile-nav-link" href="historia.html">¿Qué es un Therian?</a>
-</nav>
-
 <main id="mainContent">
-<section class="hero" aria-labelledby="heroTitle">
-  <div class="hero-content">
-    <div class="hero-copy">
-      <p class="hero-kicker">Máscaras artesanales · Costa Rica</p>
-      <h1 id="heroTitle">Máscaras <span>Therian</span></h1>
-      <p>Explorá diseños hechos a mano para conectar con tu espíritu animal.</p>
-      <div class="hero-actions">
-        <a class="hero-cta" href="#catalogo">Ver máscaras</a>
-        <a class="hero-story-link" href="historia.html">¿Qué es un Therian?</a>
+  <section class="hero container" aria-labelledby="heroTitle">
+    <div class="hero-panel">
+      <div class="hero-copy">
+        <p class="eyebrow">Una selección para descubrir</p>
+        <h1 id="heroTitle">Aromas que <span>van contigo.</span></h1>
+        <p class="hero-description">Explorá fragancias árabes que ganan espacio en Costa Rica y clásicos de diseñador. Cada ficha muestra un precio de referencia y su fuente.</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#catalogo">Explorar catálogo</a>
+          <a class="button-quiet" href="guia.html">Cómo elegir un perfume</a>
+        </div>
+        <p class="hero-footnote">Proyecto demostrativo · No se procesan pedidos ni pagos.</p>
+      </div>
+      <figure class="hero-image">
+        <img src="imagenes/perfumes/hawas-ice.jpg" alt="Frasco de Rasasi Hawas Ice, imagen de referencia" width="680" height="714" fetchpriority="high">
+        <figcaption><span>Fragancia destacada</span><strong>Rasasi Hawas Ice</strong></figcaption>
+      </figure>
+    </div>
+    <div class="hero-facts" aria-label="Datos del catálogo">
+      <div class="hero-fact"><strong>15 fragancias</strong><span>Con referencias de mercado local</span></div>
+      <div class="hero-fact"><strong>Precios en colones</strong><span>Con fecha y enlace a la fuente</span></div>
+      <div class="hero-fact"><strong>Mujer · Hombre · Unisex</strong><span>Filtros para explorar el catálogo</span></div>
+    </div>
+  </section>
+
+  <section class="catalog container" id="catalogo" aria-labelledby="catalogTitle">
+    <div class="section-heading">
+      <div>
+        <p class="section-kicker">El catálogo</p>
+        <h2 id="catalogTitle">Fragancias en tendencia y favoritos locales</h2>
+        <p>Una muestra inicial basada en reportes de perfumerías y precios publicados por comercios de Costa Rica.</p>
       </div>
     </div>
-    <figure class="hero-feature" id="heroFeature"></figure>
-  </div>
-</section>
+    <p class="price-note"><strong>Precios de referencia.</strong> Son importes observados en otras tiendas, no precios de venta de Tu Perfume CR. La fuente y la fecha aparecen en cada ficha; confirmá disponibilidad y precio con el comercio.</p>
 
-<section class="payment-bar" aria-labelledby="processTitle">
-  <div class="payment-bar-inner">
-    <h2 class="process-title" id="processTitle">Explorá la tienda</h2>
-    <ol class="process-steps">
-      <li><span class="process-step-number" aria-hidden="true">1</span>Explorá los diseños disponibles.</li>
-      <li><span class="process-step-number" aria-hidden="true">2</span>Probá el carrito de demostración.</li>
-      <li><span class="process-step-number" aria-hidden="true">3</span>Las compras y los pedidos por WhatsApp no están habilitados.</li>
-    </ol>
-    <p class="payment-details">Contacto de referencia: móvil <strong>X X X X X</strong> · <strong>Propietario</strong></p>
-  </div>
-</section>
-
-<!-- TIENDA -->
-<section class="shop-layout" id="catalogo" aria-labelledby="catalogTitle">
-  <div class="shop-header">
-    <div>
-      <p class="section-kicker">Diseños hechos a mano</p>
-      <h2 class="shop-title" id="catalogTitle">Nuestras máscaras</h2>
-      <p class="product-count" id="productCount" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div class="catalog-controls">
+      <label class="search-wrap" for="productSearch">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        <input id="productSearch" type="search" autocomplete="off" placeholder="Buscar por perfume o marca">
+      </label>
+      <div class="filter-list" id="categoryFilters" role="group" aria-label="Filtrar por categoría">
+        <button class="filter-button" type="button" data-category="Todos" aria-pressed="true">Todos</button>
+        <button class="filter-button" type="button" data-category="Mujer" aria-pressed="false">Mujer</button>
+        <button class="filter-button" type="button" data-category="Hombre" aria-pressed="false">Hombre</button>
+        <button class="filter-button" type="button" data-category="Unisex" aria-pressed="false">Unisex</button>
+      </div>
+      <label class="sort-wrap" for="productSort">Ordenar
+        <select id="productSort">
+          <option value="featured">Selección</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name">Nombre</option>
+        </select>
+      </label>
     </div>
-  </div>
+    <p class="product-count" id="productCount" role="status" aria-live="polite" aria-atomic="true">Cargando fragancias…</p>
+    <div class="products-grid" id="productsGrid" aria-busy="true">
+      <div class="empty-state"><p>Cargando el catálogo…</p></div>
+    </div>
+  </section>
 
-  <!-- FILTROS ANTES DE LA GRILLA -->
-  <div class="filter-bar" id="catFilter" role="group" aria-label="Filtrar máscaras por animal">
-    <span class="filter-label">Ver:</span>
-    <button class="cat-btn active" type="button" aria-pressed="true" aria-controls="productsGrid" onclick="filtrar('todos',this)">Todos</button>
-  </div>
-
-  <div class="products-grid" id="productsGrid" aria-busy="true">
-    <div class="empty-store"><p>Cargando productos...</p></div>
-  </div>
-</section>
+  <section class="market-brief" id="fuentes" aria-labelledby="sourcesTitle">
+    <div class="container brief-inner">
+      <div>
+        <p class="section-kicker">Investigación local</p>
+        <h2 id="sourcesTitle">Una selección basada en señales de Costa Rica</h2>
+        <p>Un reporte periodístico recoge los modelos más vendidos informados por una perfumería local. Los comparadores muestran que un mismo perfume puede variar de precio entre comercios.</p>
+        <div class="brief-sources">
+          <a href="https://www.elfinancierocr.com/negocios/por-que-todos-hablan-de-los-perfumes-arabes-lo-que/HDKKIQ2QQ5DQTMLLY33CULZNJY/story/" target="_blank" rel="noopener noreferrer">Leer el reporte de El Financiero</a>
+          <a href="https://www.ahorraya.app/precios/categoria/perfumes-arabes" target="_blank" rel="noopener noreferrer">Ver comparación de precios</a>
+          <a href="ESTUDIO_DE_MERCADO.md">Revisar el estudio y sus límites</a>
+        </div>
+      </div>
+      <a class="button-outline" href="guia.html">Leer la guía de fragancias</a>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="ft-logo">Therian Masks CR</div>
-  <p>Máscaras Therian para Costa Rica</p>
-  <p style="margin-top:0.4rem">Sitio demo: compras no habilitadas · Móvil: <strong>X X X X X</strong> · Propietario</p>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <h2 class="footer-title">Tu Perfume CR</h2>
+        <p>Catálogo de referencia de fragancias para Costa Rica. Los precios provienen de fuentes externas; no confirman inventario ni oferta comercial de este sitio.</p>
+      </div>
+      <nav class="footer-links" aria-label="Enlaces del pie de página">
+        <a href="#catalogo">Fragancias</a>
+        <a href="guia.html">Cómo elegir</a>
+        <a href="ESTUDIO_DE_MERCADO.md">Estudio de mercado</a>
+        <a href="FUENTES_DE_IMAGENES.md">Fuentes de imágenes</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">Proyecto demostrativo · No procesa pedidos ni pagos · Precios consultados el 19 de octubre de 2026</div>
+  </div>
 </footer>
 
-<!-- OVERLAY + CARRITO SIDEBAR -->
-<div class="overlay" id="overlay" aria-hidden="true" onclick="setCartOpen(false)"></div>
-<aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert>
-  <div class="cart-head">
-    <h2 id="cartTitle">Tu carrito</h2>
-    <button class="close-x" type="button" aria-label="Cerrar carrito" onclick="setCartOpen(false)">✕</button>
+<button class="backdrop" id="drawerBackdrop" type="button" aria-label="Cerrar carrito" hidden></button>
+<aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert tabindex="-1">
+  <div class="drawer-head">
+    <h2 id="cartTitle">Mi lista de muestra</h2>
+    <button class="close-button" id="cartClose" type="button" aria-label="Cerrar carrito">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
   </div>
-  <div class="cart-body" id="cartBody"></div>
-  <div class="cart-foot">
-    <div class="total-row">
-      <span>Subtotal</span>
-      <span class="total-amount" id="cartTotal">₡0</span>
-    </div>
-    <div class="envio-note">Carrito de demostración: el subtotal es referencial.</div>
-    <div class="pay-notice">
-      <strong>Esta es una página demo.</strong>
-      Las compras y los pedidos por WhatsApp no están habilitados en este momento.
-    </div>
-      <button class="wa-btn" id="waSubmit" type="button" aria-haspopup="dialog" aria-controls="demoNotice" onclick="mostrarAvisoDemo()" disabled>
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Contacto por WhatsApp
-      </button>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot">
+    <div class="total-row"><span>Total referencial</span><strong id="cartTotal">₡0</strong></div>
+    <div class="disclaimer-box">Este subtotal es solo una referencia. Tu Perfume CR aún no confirma stock ni recibe pedidos.</div>
+    <button class="checkout-disabled" type="button" disabled>Pedidos no disponibles</button>
   </div>
 </aside>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" aria-hidden="true" inert onclick="closeModalOutside(event)">
-  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalName" aria-describedby="modalDesc" tabindex="-1">
-    <button class="modal-close" type="button" aria-label="Cerrar detalles del producto" onclick="closeModal()">✕</button>
-    <div class="modal-img" id="modalImg"></div>
-    <div class="modal-info">
-      <div class="modal-cat" id="modalCat"></div>
-      <h2 class="modal-name" id="modalName"></h2>
-      <div class="modal-price-wrap">
-        <div class="modal-price" id="modalPrice"></div>
-        <div class="modal-price-label">colones</div>
-      </div>
-      <hr class="modal-divider"/>
-      <div class="modal-desc" id="modalDesc"></div>
-      <div class="modal-stock-info" id="modalStock"></div>
-      <button class="modal-add" id="modalAddBtn" type="button">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span id="modalAddLabel">Agregar al carrito</span>
-      </button>
+<dialog class="product-dialog" id="productDialog" aria-labelledby="dialogName" aria-describedby="dialogDescription">
+  <div class="dialog-shell">
+    <button class="close-button dialog-close" id="dialogClose" type="button" aria-label="Cerrar detalles">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+    </button>
+    <div class="dialog-photo"><img id="dialogImage" src="" alt="" width="680" height="714"></div>
+    <div class="dialog-copy">
+      <p class="dialog-kicker" id="dialogBrand"></p>
+      <h2 id="dialogName"></h2>
+      <p class="dialog-spec" id="dialogSpecs"></p>
+      <p class="dialog-description" id="dialogDescription"></p>
+      <p class="dialog-price-label">Precio de referencia · <span id="dialogPriceDate"></span></p>
+      <div class="dialog-price" id="dialogPrice"></div>
+      <a class="dialog-source" id="dialogPriceSource" href="" target="_blank" rel="noopener noreferrer">Consultar fuente del precio</a>
+      <a class="dialog-photo-source" id="dialogPhotoSource" href="" target="_blank" rel="noopener noreferrer">Fuente de la imagen</a>
+      <button class="add-button" id="dialogAdd" type="button">Añadir a mi lista de muestra</button>
     </div>
-  </div>
-</div>
-
-<!-- POP-OUT NOTIFICACIÓN PRODUCTO AGREGADO -->
-<div class="popout" id="popout" role="status" aria-live="polite" aria-atomic="true">
-  <div class="popout-inner">
-    <div class="popout-icon" aria-hidden="true">+</div>
-    <div class="popout-text">
-      <div class="popout-title">¡Agregado al carrito!</div>
-      <div class="popout-name" id="popoutName"></div>
-    </div>
-    <div class="popout-check" aria-hidden="true">✓</div>
-  </div>
-</div>
-
-<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
-<dialog class="demo-notice-dialog" id="demoNotice" aria-labelledby="demoNoticeTitle" aria-describedby="demoNoticeText">
-  <div class="demo-notice-content">
-    <p class="demo-notice-kicker">Aviso de demostración</p>
-    <h2 id="demoNoticeTitle">Contacto por WhatsApp no disponible</h2>
-    <p id="demoNoticeText">Esta página es una demo. Las compras y los pedidos por WhatsApp no están habilitados en este momento. No se enviará ningún mensaje ni pedido.</p>
-    <button class="demo-notice-close" type="button" onclick="cerrarAvisoDemo()" autofocus>Entendido</button>
   </div>
 </dialog>
-
-<script>
-  let productos = [];
-  let cart = [];
-  try {
-    const savedCart = JSON.parse(localStorage.getItem('therian_cart') || '[]');
-    if (Array.isArray(savedCart)) {
-      cart = savedCart.filter(item => item && Number.isInteger(item.idx) && Number.isFinite(item.qty) && item.qty > 0);
-    }
-  } catch { cart = []; }
-  let wishlist = new Set();
-  let filtroActivo = "todos";
-  let cartReturnFocus = null;
-  let modalReturnFocus = null;
-
-  async function cargarProductos() {
-    try {
-      const res = await fetch('productos.json');
-      if (!res.ok) throw new Error();
-      productos = await res.json();
-    } catch {
-      productos = [
-        { nombre:"Máscara de Lobo Lunar",    descripcion:"Diseño lunar con detalles plateados. Orejas articuladas y acabado satinado.", precio:25000, stock:10, foto:"", categoria:"Lobo",   destacado:true  },
-        { nombre:"Máscara de Zorro Otoñal",  descripcion:"Tonos cálidos de naranja y café. Acabado mate premium.",                      precio:22000, stock:8,  foto:"", categoria:"Zorro",  destacado:false },
-        { nombre:"Máscara de Dragón Místico",descripcion:"Escamas pintadas a mano, cuernos elaborados. Pieza de colección.",             precio:38000, stock:3,  foto:"", categoria:"Dragón", destacado:true  },
-        { nombre:"Máscara de Gato Nocturno", descripcion:"Elegante y minimalista. Orejas de tela, acabado negro satinado.",              precio:18000, stock:0,  foto:"", categoria:"Gato",   destacado:false },
-        { nombre:"Máscara de Ciervo Sagrado",descripcion:"Astas naturales, pintura blanca y dorada.",                                    precio:32000, stock:5,  foto:"", categoria:"Ciervo", destacado:true  },
-        { nombre:"Máscara de Búho Sabio",    descripcion:"Plumas decorativas y ojos expresivos. Gran detalle en pintado manual.",        precio:28000, stock:7,  foto:"", categoria:"Búho",   destacado:false },
-        
-      ];
-    }
-    cart = cart.reduce((items, item) => {
-      const product = productos[item.idx];
-      if (!product || product.stock <= 0) return items;
-      const qty = Math.min(Math.max(1, Math.floor(item.qty)), product.stock);
-      items.push({ idx:item.idx, nombre:product.nombre, precio:product.precio, foto:product.foto, categoria:product.categoria, qty });
-      return items;
-    }, []);
-    buildCatFilter();
-    renderHeroFeature();
-    renderProductos();
-    updateCartUI();
-  }
-
-  const EMOJIS = {"Lobo":"🐺","Zorro":"🦊","Dragón":"🐉","Gato":"🐱","Ciervo":"🦌","Búho":"🦉"};
-
-  function renderHeroFeature() {
-    const featured = productos.find(product => product.destacado && product.foto) || productos.find(product => product.foto);
-    const target = document.getElementById('heroFeature');
-    if (!featured) {
-      target.hidden = true;
-      return;
-    }
-    const image = document.createElement('img');
-    image.src = featured.foto;
-    image.alt = featured.nombre;
-    image.width = 600;
-    image.height = 652;
-    image.loading = 'eager';
-    image.fetchPriority = 'high';
-    image.decoding = 'async';
-    const caption = document.createElement('figcaption');
-    const label = document.createElement('span');
-    label.textContent = 'Diseño destacado';
-    const name = document.createElement('strong');
-    name.textContent = featured.nombre.replace(/^Máscara de\s+/i, '');
-    caption.append(label, name);
-    target.replaceChildren(image, caption);
-  }
-
-  function buildCatFilter() {
-    const cats = [...new Set(productos.map(p => p.categoria))].filter(Boolean);
-    const div = document.getElementById('catFilter');
-    cats.forEach(cat => {
-      const btn = document.createElement('button');
-      btn.className = 'cat-btn';
-      btn.type = 'button';
-      btn.textContent = cat;
-      btn.setAttribute('aria-pressed', 'false');
-      btn.setAttribute('aria-controls', 'productsGrid');
-      btn.onclick = () => filtrar(cat, btn);
-      div.appendChild(btn);
-    });
-  }
-
-  function filtrar(cat, btn) {
-    filtroActivo = cat;
-    document.querySelectorAll('.cat-btn').forEach(button => {
-      const active = button === btn;
-      button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
-    renderProductos();
-  }
-
-  function renderProductos() {
-    const grid = document.getElementById('productsGrid');
-    const lista = filtroActivo === 'todos' ? productos : productos.filter(p => p.categoria === filtroActivo);
-    document.getElementById('productCount').textContent = lista.length + (lista.length === 1 ? ' producto' : ' productos');
-    grid.setAttribute('aria-busy', 'true');
-    grid.replaceChildren();
-    if (!lista.length) {
-      const empty = document.createElement('div');
-      empty.className = 'empty-store';
-      const message = document.createElement('p');
-      message.textContent = 'No hay productos en esta categoría.';
-      empty.append(message);
-      grid.append(empty);
-      grid.setAttribute('aria-busy', 'false');
-      return;
-    }
-    lista.forEach(p => {
-      const realIdx = productos.indexOf(p);
-      const agotado = p.stock === 0;
-      const stockLow = p.stock > 0 && p.stock <= 3;
-      const card = document.createElement('article');
-      card.className = 'product-card';
-
-      const imageWrap = document.createElement('div');
-      imageWrap.className = 'card-img-wrap';
-      const detailsButton = document.createElement('button');
-      detailsButton.className = 'card-image-button';
-      detailsButton.type = 'button';
-      detailsButton.setAttribute('aria-label', 'Ver detalles de ' + p.nombre);
-      detailsButton.addEventListener('click', () => openModal(realIdx, detailsButton));
-      const image = document.createElement('img');
-      image.alt = '';
-      image.width = 640;
-      image.height = 640;
-      image.loading = 'lazy';
-      image.decoding = 'async';
-      const placeholder = document.createElement('span');
-      placeholder.className = 'card-img-placeholder';
-      placeholder.textContent = p.categoria || 'Máscara';
-      placeholder.style.display = p.foto ? 'none' : 'flex';
-      if (p.foto) {
-        image.src = p.foto;
-        image.addEventListener('error', () => {
-          image.style.display = 'none';
-          placeholder.style.display = 'flex';
-        }, { once:true });
-        detailsButton.append(image);
-      }
-      detailsButton.append(placeholder);
-
-      if (p.destacado) {
-        const featuredBadge = document.createElement('span');
-        featuredBadge.className = 'badge-dest';
-        featuredBadge.textContent = 'Destacado';
-        detailsButton.append(featuredBadge);
-      }
-      if (agotado) {
-        const soldOutBadge = document.createElement('span');
-        soldOutBadge.className = 'badge-agotado';
-        soldOutBadge.textContent = 'Agotado';
-        detailsButton.append(soldOutBadge);
-      }
-      imageWrap.append(detailsButton);
-
-      const favoriteButton = document.createElement('button');
-      favoriteButton.className = 'wish-btn' + (wishlist.has(realIdx) ? ' active' : '');
-      favoriteButton.type = 'button';
-      favoriteButton.setAttribute('aria-label', (wishlist.has(realIdx) ? 'Quitar ' : 'Agregar ') + p.nombre + ' a favoritos');
-      favoriteButton.setAttribute('aria-pressed', String(wishlist.has(realIdx)));
-      const heart = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      heart.setAttribute('viewBox', '0 0 24 24');
-      heart.setAttribute('width', '20');
-      heart.setAttribute('height', '20');
-      heart.setAttribute('aria-hidden', 'true');
-      heart.setAttribute('fill', 'none');
-      heart.setAttribute('stroke', 'currentColor');
-      heart.setAttribute('stroke-width', '1.8');
-      const heartPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      heartPath.setAttribute('d', 'M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z');
-      heart.append(heartPath);
-      favoriteButton.append(heart);
-      favoriteButton.addEventListener('click', () => toggleWish(realIdx, favoriteButton));
-      imageWrap.append(favoriteButton);
-
-      const body = document.createElement('div');
-      body.className = 'card-body';
-      const category = document.createElement('div');
-      category.className = 'card-cat';
-      category.textContent = p.categoria || 'Máscaras';
-      const name = document.createElement('button');
-      name.className = 'card-name';
-      name.type = 'button';
-      name.textContent = p.nombre;
-      name.addEventListener('click', () => openModal(realIdx, name));
-      const nameHeading = document.createElement('h3');
-      nameHeading.append(name);
-      const description = document.createElement('p');
-      description.className = 'card-desc';
-      description.textContent = p.descripcion;
-      body.append(category, nameHeading, description);
-      if (stockLow) {
-        const stockMessage = document.createElement('p');
-        stockMessage.className = 'card-stock-low';
-        stockMessage.textContent = 'Solo ' + p.stock + ' disponible' + (p.stock === 1 ? '' : 's');
-        body.append(stockMessage);
-      }
-
-      const footer = document.createElement('div');
-      footer.className = 'card-footer';
-      const priceWrap = document.createElement('div');
-      priceWrap.className = 'card-footer-price';
-      const price = document.createElement('div');
-      price.className = 'card-price';
-      price.textContent = '₡' + p.precio.toLocaleString('es-CR');
-      const priceUnit = document.createElement('div');
-      priceUnit.className = 'card-price-sub';
-      priceUnit.textContent = 'colones';
-      priceWrap.append(price, priceUnit);
-      const addButton = document.createElement('button');
-      addButton.className = 'add-to-cart';
-      addButton.type = 'button';
-      addButton.setAttribute('aria-label', 'Agregar ' + p.nombre + ' al carrito');
-      addButton.disabled = agotado;
-      addButton.textContent = agotado ? 'Agotado' : 'Añadir';
-      addButton.addEventListener('click', () => addToCart(realIdx));
-      footer.append(priceWrap, addButton);
-      body.append(footer);
-      card.append(imageWrap, body);
-      grid.append(card);
-    });
-    grid.setAttribute('aria-busy', 'false');
-  }
-
-  function toggleWish(idx, btn) {
-    const active = wishlist.has(idx);
-    const product = productos[idx];
-    if (active) wishlist.delete(idx);
-    else wishlist.add(idx);
-    btn.classList.toggle('active', !active);
-    btn.setAttribute('aria-pressed', String(!active));
-    btn.setAttribute('aria-label', (active ? 'Agregar ' : 'Quitar ') + product.nombre + ' ' + (active ? 'a' : 'de') + ' favoritos');
-    showToast(active ? product.nombre + ' se quitó de favoritos.' : product.nombre + ' se agregó a favoritos.');
-  }
-
-  function saveCart() {
-    try { localStorage.setItem('therian_cart', JSON.stringify(cart)); } catch {}
-  }
-
-  function addToCart(idx) {
-    const p = productos[idx];
-    if (!p || p.stock <= 0) { showToast('Este producto no está disponible.'); return; }
-    const ex = cart.find(i => i.idx === idx);
-    if (ex) { if (ex.qty < p.stock) { ex.qty++; } else { showToast('No hay más unidades disponibles.'); return; } }
-    else { cart.push({ idx, nombre:p.nombre, precio:p.precio, foto:p.foto, categoria:p.categoria, qty:1 }); }
-    updateCartUI();
-    showPopout(p.nombre);
-  }
-
-  function removeFromCart(idx) {
-    cart = cart.filter(item => item.idx !== idx);
-    updateCartUI();
-    const focusTarget = document.querySelector('.cart-item .qbtn:not(:disabled)') || document.querySelector('.cart-sidebar .close-x');
-    focusTarget.focus();
-  }
-
-  function changeQty(idx, d) {
-    const item = cart.find(i => i.idx === idx);
-    if (!item) return;
-    const product = productos[idx];
-    if (d > 0 && item.qty >= product.stock) { showToast('No hay más unidades disponibles.'); return; }
-    const activeAction = document.activeElement.getAttribute('data-cart-action');
-    if (item.qty + d <= 0) removeFromCart(idx);
-    else {
-      item.qty += d;
-      updateCartUI();
-      const action = activeAction === 'increase' && item.qty >= product.stock ? 'decrease' : activeAction;
-      const focusTarget = action && document.querySelector('[data-cart-action="' + action + '"][data-product-index="' + idx + '"]');
-      if (focusTarget && !focusTarget.disabled) focusTarget.focus();
-    }
-  }
-
-  function updateCartUI() {
-    const total = cart.reduce((s,i) => s + i.precio * i.qty, 0);
-    const count = cart.reduce((s,i) => s + i.qty, 0);
-    document.getElementById('cartCount').textContent = count;
-    document.querySelector('.cart-btn').setAttribute('aria-label', 'Abrir carrito; ' + count + (count === 1 ? ' producto' : ' productos'));
-    document.getElementById('cartTotal').textContent = '₡' + total.toLocaleString('es-CR');
-    document.getElementById('waSubmit').disabled = cart.length === 0;
-    saveCart();
-    const body = document.getElementById('cartBody');
-    if (!cart.length) {
-      body.innerHTML = `<div class="cart-empty"><p>Tu carrito está vacío.</p><p class="cart-empty-hint">Agregá algunas máscaras para empezar.</p></div>`;
-      return;
-    }
-    const emoji = cat => EMOJIS[cat] || cat || 'Máscara';
-    body.innerHTML = cart.map(item => `
-      <div class="cart-item">
-        <div class="ci-img">
-          ${item.foto ? `<img src="${item.foto}" alt="" width="62" height="62" loading="lazy" decoding="async" onerror="this.style.display='none'">` : `<div class="ci-img-ph">${emoji(item.categoria)}</div>`}
-        </div>
-        <div class="ci-info">
-          <div class="ci-name">${item.nombre}</div>
-          <div class="ci-price">₡${item.precio.toLocaleString('es-CR')} c/u</div>
-          <div class="qty-row">
-            <button class="qbtn" type="button" data-cart-action="decrease" data-product-index="${item.idx}" aria-label="Quitar una unidad de ${item.nombre}" onclick="changeQty(${item.idx},-1)">−</button>
-            <output class="qnum" role="status" aria-live="polite" aria-atomic="true" aria-label="Cantidad de ${item.nombre}">${item.qty}</output>
-            <button class="qbtn" type="button" data-cart-action="increase" data-product-index="${item.idx}" aria-label="Añadir una unidad de ${item.nombre}" ${item.qty >= productos[item.idx].stock ? 'disabled' : ''} onclick="changeQty(${item.idx},1)">+</button>
-          </div>
-        </div>
-        <button class="ci-del" type="button" aria-label="Quitar ${item.nombre} del carrito" onclick="removeFromCart(${item.idx})">×</button>
-      </div>`).join('');
-  }
-
-  function trapDialogFocus(event, dialog) {
-    const focusable = Array.from(dialog.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'))
-      .filter(element => element.getClientRects().length > 0);
-    if (!focusable.length) {
-      event.preventDefault();
-      dialog.focus();
-      return;
-    }
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    if (event.shiftKey && document.activeElement === first) {
-      event.preventDefault();
-      last.focus();
-    } else if (!event.shiftKey && document.activeElement === last) {
-      event.preventDefault();
-      first.focus();
-    }
-  }
-
-  function setCartOpen(open) {
-    const panel = document.getElementById('cartSidebar');
-    const toggle = document.querySelector('.cart-btn');
-    if (panel.classList.contains('open') === open) return;
-    if (open) {
-      cartReturnFocus = document.activeElement;
-      panel.inert = false;
-      panel.setAttribute('aria-hidden', 'false');
-      panel.classList.add('open');
-      document.getElementById('overlay').classList.add('open');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      panel.querySelector('.close-x').focus();
-      return;
-    }
-    panel.classList.remove('open');
-    panel.inert = true;
-    panel.setAttribute('aria-hidden', 'true');
-    document.getElementById('overlay').classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-    if (cartReturnFocus && cartReturnFocus.isConnected) cartReturnFocus.focus();
-    cartReturnFocus = null;
-  }
-
-  function toggleCart() {
-    setCartOpen(!document.getElementById('cartSidebar').classList.contains('open'));
-  }
-
-  function mostrarAvisoDemo() {
-    if (!cart.length) { showToast('Tu carrito está vacío.'); return; }
-    const notice = document.getElementById('demoNotice');
-    if (notice && !notice.open) notice.showModal();
-  }
-
-  function cerrarAvisoDemo() {
-    const notice = document.getElementById('demoNotice');
-    if (notice && notice.open) notice.close();
-  }
-
-  let popoutTimer = null;
-  function showPopout(nombre) {
-    const el = document.getElementById('popout');
-    document.getElementById('popoutName').textContent = nombre;
-    el.classList.add('show');
-    clearTimeout(popoutTimer);
-    popoutTimer = setTimeout(() => el.classList.remove('show'), 2800);
-  }
-
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg; t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 2800);
-  }
-
-  let modalIdx = null;
-  function openModal(idx, trigger=document.activeElement) {
-    const p = productos[idx];
-    if (!p) return;
-    modalIdx = idx;
-    modalReturnFocus = trigger;
-    const imgDiv = document.getElementById('modalImg');
-    imgDiv.replaceChildren();
-    if (p.foto) {
-      const image = document.createElement('img');
-      image.src = p.foto;
-      image.alt = p.nombre;
-      image.width = 800;
-      image.height = 900;
-      image.decoding = 'async';
-      image.addEventListener('error', () => {
-        const fallback = document.createElement('div');
-        fallback.className = 'modal-img-ph';
-        fallback.textContent = p.categoria || 'Máscara';
-        imgDiv.replaceChildren(fallback);
-      }, { once:true });
-      imgDiv.append(image);
-    } else {
-      const fallback = document.createElement('div');
-      fallback.className = 'modal-img-ph';
-      fallback.textContent = p.categoria || 'Máscara';
-      imgDiv.append(fallback);
-    }
-    document.getElementById('modalCat').textContent   = p.categoria || 'Máscara';
-    document.getElementById('modalName').textContent  = p.nombre;
-    document.getElementById('modalPrice').textContent = '₡' + p.precio.toLocaleString('es-CR');
-    document.getElementById('modalDesc').textContent  = p.descripcion;
-    const stockEl = document.getElementById('modalStock');
-    const btn = document.getElementById('modalAddBtn');
-    if (p.stock === 0) {
-      stockEl.textContent = 'Agotado'; stockEl.className = 'modal-stock-info out';
-      btn.disabled = true; document.getElementById('modalAddLabel').textContent = 'Agotado';
-    } else if (p.stock <= 3) {
-      stockEl.textContent = 'Solo ' + p.stock + ' disponible' + (p.stock === 1 ? '' : 's');
-      stockEl.className = 'modal-stock-info low';
-      btn.disabled = false; document.getElementById('modalAddLabel').textContent = 'Agregar al carrito';
-    } else {
-      stockEl.textContent = 'En stock: ' + p.stock + ' disponibles';
-      stockEl.className = 'modal-stock-info ok';
-      btn.disabled = false; document.getElementById('modalAddLabel').textContent = 'Agregar al carrito';
-    }
-    btn.onclick = () => addFromModal();
-    const overlay = document.getElementById('modalOverlay');
-    overlay.inert = false;
-    overlay.setAttribute('aria-hidden', 'false');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    document.querySelector('.modal-close').focus();
-  }
-
-  function closeModal() {
-    const overlay = document.getElementById('modalOverlay');
-    if (!overlay.classList.contains('open')) return;
-    overlay.classList.remove('open');
-    overlay.inert = true;
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = document.getElementById('cartSidebar').classList.contains('open') ? 'hidden' : '';
-    if (modalReturnFocus && modalReturnFocus.isConnected) modalReturnFocus.focus();
-    modalReturnFocus = null;
-    modalIdx = null;
-  }
-  function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      if (document.getElementById('modalOverlay').classList.contains('open')) closeModal();
-      else if (document.getElementById('cartSidebar').classList.contains('open')) setCartOpen(false);
-      else return;
-      event.preventDefault();
-    } else if (event.key === 'Tab') {
-      const modal = document.getElementById('productModal');
-      const cartPanel = document.getElementById('cartSidebar');
-      if (document.getElementById('modalOverlay').classList.contains('open')) trapDialogFocus(event, modal);
-      else if (cartPanel.classList.contains('open')) trapDialogFocus(event, cartPanel);
-    }
-  });
-  function addFromModal() {
-    if (modalIdx === null) return;
-    addToCart(modalIdx);
-    closeModal();
-  }
-
-  cargarProductos();
-</script>
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+<script src="app.js" defer></script>
 </body>
 </html>
+
