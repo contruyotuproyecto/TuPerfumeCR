@@ -28,8 +28,6 @@
     controls: document.getElementById('catalogControls'),
     favoritesToggle: document.getElementById('favoritesToggle'),
     cartToggle: document.getElementById('cartToggle'),
-    heroPanel: document.querySelector('.hero-panel'),
-    heroMotionToggle: document.getElementById('heroMotionToggle'),
     cartCount: document.getElementById('cartCount'),
     cartDrawer: document.getElementById('cartDrawer'),
     cartBackdrop: document.getElementById('drawerBackdrop'),
@@ -505,20 +503,6 @@
     updateFavoritesToggle();
     renderProducts();
     document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-  elements.heroMotionToggle.addEventListener('click', function () {
-    const paused = this.getAttribute('aria-pressed') !== 'true';
-    this.setAttribute('aria-pressed', String(paused));
-    this.title = paused ? 'Reanudar animación de fondo' : 'Pausar animación de fondo';
-    elements.heroPanel.classList.toggle('motion-paused', paused);
-  });
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      elements.heroPanel.classList.toggle('motion-offscreen', !entries[0].isIntersecting);
-    }).observe(elements.heroPanel);
-  }
-  document.addEventListener('visibilitychange', function () {
-    elements.heroPanel.classList.toggle('motion-hidden', document.hidden);
   });
   elements.cartToggle.addEventListener('click', function () { setCartOpen(true); });
   elements.cartClose.addEventListener('click', function () { setCartOpen(false); });
